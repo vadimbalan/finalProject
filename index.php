@@ -14,10 +14,7 @@ session_start();
 $f3 = Base::instance();
 
 // Default route
-$f3->route('GET /', function()
-{
-    // Testing
-    //echo "<h1>Home Page</h1>";
+$f3->route('GET /', function () {
 
     $view = new Template();
     echo $view->render('views/home.html');
