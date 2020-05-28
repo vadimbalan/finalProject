@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information</title>
+    <include href="includes/header.html"></include>
+</head>
+<body>
+
+<form action="#" method="post">
+    <div class="container box-border form-group">
+        <h1>Personal Information</h1>
+        <hr>
+        <div class="row">
+            <div class="col-8">
+                <label for="fName"><strong>First Name</strong></label>
+                <input type="text" class="form-control" id="fName" name="fName" placeholder="First name" value="{{ @fName }}">
+                <span class="err">
+                        <check if="{{ isset(@errors['fName']) }}">
+                            {{ @errors['fName'] }}
+                        </check>
+                    </span>
+                <br>
+                <label for="lName"><strong>Last Name</strong></label>
+                <input type="text" class="form-control" id="lName" name="lName" placeholder="Last name" value="{{ @lName }}">
+                <span class="err">
+                        <check if="{{ isset(@errors['lName']) }}">
+                            {{ @errors['lName'] }}
+                        </check>
+                </span>
+                <br>
+                <label for="phone"><strong>Phone Number</strong></label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="222-333-4444" value="{{ @phone }}">
+                <span class="err">
+                        <check if="{{ isset(@errors['phone']) }}">
+                            {{ @errors['phone'] }}
+                        </check>
+                </span>
+                <br>
+                <label for="email"><strong>Email</strong></label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" value="{{ @email }}">
+                <span class="err">
+                        <check if="{{ isset(@errors['email']) }}">
+                            {{ @errors['email'] }}
+                        </check>
+                </span>
+            </div>
+            <div class="col-4">
+                <p><strong>Note: </strong>All information entered is protected by our <a>privacy policy.</a> Profile
+                    information can only be viewed by others with your permission.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Next ></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

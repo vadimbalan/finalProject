@@ -20,5 +20,12 @@ $f3->route('GET /', function () {
     echo $view->render('views/home.html');
 });
 
+// Basic information page
+$f3->route('GET /information', function () {
+
+    $view = new Template();
+    echo $view->render('views/information.html');
+});
+
 // Run F3
 $f3->run();
