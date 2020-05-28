@@ -14,17 +14,31 @@ session_start();
 $f3 = Base::instance();
 
 // Default route
-$f3->route('GET /', function () {
+$f3->route('GET /', function ()
+{
 
     $view = new Template();
     echo $view->render('views/home.html');
 });
 
 // Basic information page
-$f3->route('GET /information', function () {
+$f3->route('GET|POST /information', function ($f3)
+{
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        $f3->reroute('/car');
+    }
 
     $view = new Template();
     echo $view->render('views/information.html');
+});
+
+// Basic information page
+$f3->route('GET|POST /car', function ()
+{
+
+    $view = new Template();
+    echo $view->render('views/car.html');
 });
 
 // Run F3
