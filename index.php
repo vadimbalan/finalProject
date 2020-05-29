@@ -14,19 +14,17 @@ session_start();
 $f3 = Base::instance();
 
 // Default route
-$f3->route('GET /', function ()
-{
+$f3->route('GET /', function () {
 
     $view = new Template();
     echo $view->render('views/home.html');
 });
 
 // Basic information page
-$f3->route('GET|POST /information', function ($f3)
-{
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        $f3->reroute('/car');
+$f3->route('GET|POST /information', function ($f3) {
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $f3->reroute('car');
     }
 
     $view = new Template();
@@ -34,11 +32,10 @@ $f3->route('GET|POST /information', function ($f3)
 });
 
 // Basic information about car page
-$f3->route('GET|POST /car', function ($f3)
-{
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        $f3->reroute('/exterior');
+$f3->route('GET|POST /car', function ($f3) {
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $f3->reroute('exterior');
     }
 
     $view = new Template();
@@ -46,11 +43,10 @@ $f3->route('GET|POST /car', function ($f3)
 });
 
 // Information about exterior of car
-$f3->route('GET|POST /exterior', function ($f3)
-{
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        $f3->reroute('/interior');
+$f3->route('GET|POST /exterior', function ($f3) {
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $f3->reroute('interior');
     }
 
     $view = new Template();
@@ -58,11 +54,10 @@ $f3->route('GET|POST /exterior', function ($f3)
 });
 
 // Information about interior of car
-$f3->route('GET|POST /interior', function ($f3)
-{
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        $f3->reroute('/interior');
+$f3->route('GET|POST /interior', function ($f3) {
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $f3->reroute('summary');
     }
 
     $view = new Template();
@@ -70,8 +65,8 @@ $f3->route('GET|POST /interior', function ($f3)
 });
 
 // Summary page of the final product
-$f3->route('GET /summary', function ($f3)
-{
+$f3->route('GET /summary', function ($f3) {
+
     $view = new Template();
     echo $view->render('views/summary.html');
 });
