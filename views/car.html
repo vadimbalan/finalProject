@@ -15,7 +15,7 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
-                    <label for="makeDrop"><strong>Please select the model of your dream BMW</strong></label>
+                    <label for="makeDrop"><strong>Please select the model of your dream BMW *</strong></label>
                     <select class="form-control" id="makeDrop">
                         <option>Please choose one...</option>
                         <option>228i</option>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="yearDrop"><strong>Please select a year</strong></label>
+                    <label for="yearDrop"><strong>Please select a year *</strong></label>
                     <select class="form-control" id="yearDrop">
                         <option>Please choose one...</option>
                         <option value="2020">2020</option>
@@ -84,14 +84,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label><strong>Drive-train</strong></label>
+                    <label><strong>Drive-train *</strong></label>
                     <div class="form-group">
                         <input type="radio" id="allWheel" name="driveTrain" value="allWheel">
                         <label for="allWheel">All Wheel Drive</label><br>
                         <input type="radio" id="rearWheel" name="driveTrain" value="rearWheel">
                         <label for="rearWheel">Rear Wheel Drive</label><br>
                         <input type="radio" id="frontWheel" name="driveTrain" value="frontWheel">
-                        <label for="frontWheel">Front Wheel Drive</label>
+                        <label for="frontWheel">Front Wheel Drive</label><br>
+                        <input type="radio" id="anyWheel" name="driveTrain" value="anyWheel">
+                        <label for="frontWheel">Can pick between all/front/rear drive at the push of a button</label>
                     </div>
                 </div>
             </div>
@@ -103,6 +105,7 @@
                                 href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">privacy
                             policy</a>.
                             Profile information can only be viewed by others with your permission.</p>
+                        <p class="card-text"><b>Required:</b> Anything with a * is required and needs to be filled out.</p>
                     </div>
                 </div>
             </div>

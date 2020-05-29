@@ -65,7 +65,7 @@ $f3->route('GET|POST /interior', function ($f3) {
 });
 
 // Summary page of the final product
-$f3->route('GET /summary', function ($f3) {
+$f3->route('GET /summary', function () {
 
     $view = new Template();
     echo $view->render('views/summary.html');

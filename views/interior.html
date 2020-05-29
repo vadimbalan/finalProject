@@ -16,24 +16,68 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
-
-                    <!--put form item here-->
-
-
+                    <label for="leather"><strong>Select the type of leather desired *</strong></label>
+                    <select class="form-control" id="leather">
+                        <option>Please choose one...</option>
+                        <option>Stock Leather</option>
+                        <option>Nylon</option>
+                        <option>Polyester</option>
+                        <option>Vinyl</option>
+                        <option>Faux materials</option>
+                        <option>Brown Leather (Black stitching)</option>
+                        <option>Black Leather (Red stitching)</option>
+                        <option>Red Leather (Black stitching)</option>
+                        <option>White Leather (White stitching)</option>
+                        <option>White Leather (Red stitching)</option>
+                        <option>White Leather (Black stitching)</option>
+                        <option>Tan Leather (Black Stitching)</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-
-                    <!--put form item here-->
-
-
+                    <label for="seats"><strong>Select the number of seats *</strong></label>
+                    <select class="form-control" id="seats">
+                        <option>Please choose one...</option>
+                        <option>2 seats 2 doors</option>
+                        <option>2 seats 4 doors</option>
+                        <option>5 seats 2 doors</option>
+                        <option>5 seats 4 doors</option>
+                        <option>8 seats 4 doors</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
+                    <label><strong>Stereo System *</strong></label>
+                    <div class="form-group">
+                        <input type="radio" id="harman" name="stereo" value="harman">
+                        <label for="harman">Harman Kardon</label><br>
+                        <input type="radio" id="bang" name="stereo" value="bang">
+                        <label for="bang">Bang & Olufsen</label><br>
+                        <input type="radio" id="boise" name="stereo" value="boise">
+                        <label for="boise">Boise</label><br>
+                        <input type="radio" id="sony" name="stereo" value="sony">
+                        <label for="sony">Sony</label>
+                    </div>
+                </div>
 
-                    <!--put form item here-->
+                <div class="form-group">
+                    <label><strong>Add navigation system *</strong></label>
+                    <div class="form-group">
+                        <input type="radio" id="yesNav" name="nav" value="yesNav">
+                        <label for="yesNav">Yes, add navigation system</label><br>
+                        <input type="radio" id="noNav" name="nav" value="noNav">
+                        <label for="noNav">No, don't add navigation system</label><br>
+                    </div>
+                </div>
 
-
+                <div class="form-group">
+                    <label><strong>Heads up display *</strong></label>
+                    <div class="form-group">
+                        <input type="radio" id="yesHeads" name="nav" value="yesHeads">
+                        <label for="yesHeads">Yes, add heads up display system</label><br>
+                        <input type="radio" id="noHeads" name="nav" value="noHeads">
+                        <label for="noHeads">No, don't add heads up display system</label><br>
+                    </div>
                 </div>
 
 
@@ -45,6 +89,7 @@
                         <p class="card-text"><b>Note:</b> All information entered is protected by our <a
                                 href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">privacy policy</a>.
                             Profile information can only be viewed by others with your permission.</p>
+                        <p class="card-text"><b>Required:</b> Anything with a * is required and needs to be filled out.</p>
                     </div>
                 </div>
             </div>
