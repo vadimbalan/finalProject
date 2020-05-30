@@ -6,7 +6,7 @@
     <include href="includes/header.html"></include>
 </head>
 <body>
-<div class="card container mt-5">
+<div class="card container m-5">
     <div class="card-body">
 
         <h1>Design the exterior of your BMW</h1>
@@ -15,82 +15,75 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
-                    <label for="rimDrop"><strong>Select the size of the rims</strong></label>
-                    <select class="form-control" id="rimDrop">
-                        <option>Please choose one...</option>
-                        <option>Stock Rim Size</option>
-                        <option>16'</option>
-                        <option>17'</option>
-                        <option>18'</option>
-                        <option>19'</option>
-                        <option>20'</option>
-                        <option>21'</option>
-                        <option>22'</option>
-                        <option>23'</option>
-                        <option>24'</option>
-                        <option>25'</option>
-                        <option>26'</option>
+                    <label for="rimDrop"><strong>Select the size of the rims *</strong></label>
+                    <select class="form-control" id="rimDrop" name="rimDrop">
+
+                        <repeat group="{{ @rims }}" value="{{ @rim }}">
+                            <option value="{{ @rim }}">{{ @rim }}</option>
+                        </repeat>
+
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label><strong>Add spinners to the rim?</strong></label>
-                    <div class="form-group">
-                        <input type="radio" id="yesSpinner" name="spinners" value="yesSpinner">
-                        <label for="yesSpinner">Yes</label><br>
-                        <input type="radio" id="noSpinner" name="spinners" value="noSpinner">
-                        <label for="noSpinner">No</label><br>
-                    </div>
+                    <label><strong>Add spinners to the rim? *</strong></label>
+
+                    <repeat group="{{ @spinners }}" value="{{ @spinner }}">
+                        <br>
+                        <input type="radio" id="{{ @spinner }}" name="spinners" value="{{ @spinner }}">
+                        <label for="{{ @spinner }}">{{ @spinner }}</label>
+                    </repeat>
+
                 </div>
 
                 <div class="form-group">
-                    <label for="colorCar"><strong>Select color of the vehicle</strong></label>
-                    <select class="form-control" id="colorCar">
-                        <option>Please choose one...</option>
-                        <option>White</option>
-                        <option>Black</option>
-                        <option>Yellow</option>
-                        <option>Gray</option>
-                        <option>Red</option>
-                        <option>Imperial Blue</option>
-                        <option>Pink</option>
-                        <option>Orange</option>
-                        <option>Green</option>
-                        <option>Purple</option>
-                        <option>Sky Blue</option>
-                        <option>Brown</option>
+                    <label for="colorCar"><strong>Select color of the vehicle *</strong></label>
+                    <select class="form-control" id="colorCar" name="colorCar">
+
+                        <repeat group="{{ @colors }}" value="{{ @color }}">
+                            <option value="{{ @color }}">{{ @color }}</option>
+                        </repeat>
+
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="exhaust"><strong>Select exhaust type</strong></label>
-                    <select class="form-control" id="exhaust">
-                        <option>Please choose one...</option>
-                        <option>Stock Exhuast System</option>
-                        <option>MagnaFLow</option>
-                        <option>Flowmaster American Thunder</option>
-                        <option>Heartthrob Exhaust System</option>
-                        <option>Borla</option>
-                        <option>MBRP</option>
-                        <option>Corsa</option>
-                        <option>PaceSetter</option>
-                        <option>JBA</option>
-                        <option>Invidia</option>
+                    <label for="exhaust"><strong>Select exhaust type *</strong></label>
+                    <select class="form-control" id="exhaust" name="exhaust">
+
+                        <repeat group="{{ @exhausts }}" value="{{ @exhaust }}">
+                            <option value="{{ @exhaust }}">{{ @exhaust }}</option>
+                        </repeat>
+
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="engine"><strong>Select the type of engine</strong></label>
-                    <select class="form-control" id="engine">
-                        <option>Please choose one...</option>
-                        <option>S55 (3.0 Liter Twin Turbocharged I6)</option>
-                        <option>S63 (4.4 Liter Twin Turbocharged V8)</option>
-                        <option>S65 (4.0 Liter Naturally Aspirated V8)</option>
-                        <option>M88 (3.5 Liter Naturally Aspirated I6)</option>
-                        <option>S70/2 (6.1 Liter Naturally Aspirated V12)</option>
-                        <option>Electric (Varies)</option>
+                    <label for="engine"><strong>Select the type of engine *</strong></label>
+                    <select class="form-control" id="engine" name="engine">
+
+                        <repeat group="{{ @engines }}" value="{{ @engine }}">
+                            <option value="{{ @engine }}">{{ @engine }}</option>
+                        </repeat>
+
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label><strong>Transmission *</strong></label>
+
+                    <repeat group="{{ @transmissions }}" value="{{ @transmission }}">
+                        <br>
+                        <input type="radio" id="{{ @transmission }}" name="transmission"
+                               value="{{ @transmission }}">
+                        <label for="{{ @transmission }}">{{ @transmission }}</label>
+                    </repeat>
+
+                </div>
+
+                <label for="costumeExterior"><strong>List any costume you want to add</strong></label>
+                <textarea class="form-control" id="costumeExterior" rows="5" name="costumeExterior"
+                          placeholder="Add anything costume..."></textarea>
 
             </div>
 
@@ -100,6 +93,8 @@
                         <p class="card-text"><b>Note:</b> All information entered is protected by our <a
                                 href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">privacy policy</a>.
                             Profile information can only be viewed by others with your permission.</p>
+                        <p class="card-text"><b>Required:</b> Anything with a * is required and needs to be filled out.
+                        </p>
                     </div>
                 </div>
             </div>

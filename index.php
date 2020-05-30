@@ -5,7 +5,9 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Require the autoload file
-require_once("vendor/autoload.php");
+require_once('vendor/autoload.php');
+require_once("model/data-layer.php");
+require_once("model/validate.php");
 
 // Start a session AFTER requiring autoload.php
 session_start();
@@ -34,9 +36,21 @@ $f3->route('GET|POST /information', function ($f3) {
 // Basic information about car page
 $f3->route('GET|POST /car', function ($f3) {
 
+    //If the form has been submitted
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Store the data in the session array
+        $_SESSION['model'] = $_POST['makeDrop'];
+        $_SESSION['year'] = $_POST['yearDrop'];
+        $_SESSION['wheel'] = $_POST['driveTrain'];
+
+        //Redirect to exterior page
         $f3->reroute('exterior');
     }
+
+    $f3->set('models', getModel());
+    $f3->set('years', getYear());
+    $f3->set('wheels', getWheel());
 
     $view = new Template();
     echo $view->render('views/car.html');
@@ -46,8 +60,24 @@ $f3->route('GET|POST /car', function ($f3) {
 $f3->route('GET|POST /exterior', function ($f3) {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Store the data in the session array
+        $_SESSION['rim'] = $_POST['rimDrop'];
+        $_SESSION['spinner'] = $_POST['spinners'];
+        $_SESSION['color'] = $_POST['colorCar'];
+        $_SESSION['exhaust'] = $_POST['exhaust'];
+        $_SESSION['engine'] = $_POST['engine'];
+        $_SESSION['transmission'] = $_POST['transmission'];
+
         $f3->reroute('interior');
     }
+
+    $f3->set('rims', getRim());
+    $f3->set('spinners', getSpinner());
+    $f3->set('colors', getColor());
+    $f3->set('exhausts', getExhaust());
+    $f3->set('engines', getEngine());
+    $f3->set('transmissions', getTransmission());
 
     $view = new Template();
     echo $view->render('views/exterior.html');
@@ -57,18 +87,34 @@ $f3->route('GET|POST /exterior', function ($f3) {
 $f3->route('GET|POST /interior', function ($f3) {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Store the data in the session array
+        $_SESSION['leather'] = $_POST['leather'];
+        $_SESSION['seat'] = $_POST['seats'];
+        $_SESSION['stereo'] = $_POST['stereo'];
+        $_SESSION['navigation'] = $_POST['nav'];
+        $_SESSION['headsUp'] = $_POST['head'];
+
         $f3->reroute('summary');
     }
+
+    $f3->set('leathers', getLeather());
+    $f3->set('seats', getSeat());
+    $f3->set('stereos', getStereo());
+    $f3->set('navigations', getNavigation());
+    $f3->set('headsUps', getHeadsUp());
 
     $view = new Template();
     echo $view->render('views/interior.html');
 });
 
 // Summary page of the final product
-$f3->route('GET /summary', function ($f3) {
+$f3->route('GET /summary', function () {
 
     $view = new Template();
     echo $view->render('views/summary.html');
+
+    session_destroy();
 });
 
 

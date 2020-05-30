@@ -6,7 +6,7 @@
     <include href="includes/header.html"></include>
 </head>
 <body>
-<div class="card container mt-5">
+<div class="card container m-5">
     <div class="card-body">
 
         <h1>Design the interior of your BMW</h1>
@@ -16,23 +16,57 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
+                    <label for="leather"><strong>Select the type of leather desired *</strong></label>
+                    <select class="form-control" id="leather" name="leather">
 
-                    <!--put form item here-->
+                        <repeat group="{{ @leathers }}" value="{{ @leather }}">
+                            <option value="{{ @leather }}">{{ @leather }}</option>
+                        </repeat>
 
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="seats"><strong>Select the number of seats *</strong></label>
+                    <select class="form-control" id="seats" name="seats">
+
+                        <repeat group="{{ @seats }}" value="{{ @seat }}">
+                            <option value="{{ @seat }}">{{ @seat }}</option>
+                        </repeat>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Stereo System *</strong></label>
+
+                    <repeat group="{{ @stereos }}" value="{{ @stereo }}">
+                        <br>
+                        <input type="radio" id="{{ @stereo }}" name="stereo" value="{{ @stereo }}">
+                        <label for="{{ @stereo }}">{{ @stereo }}</label>
+                    </repeat>
 
                 </div>
 
                 <div class="form-group">
+                    <label><strong>Add navigation system *</strong></label>
 
-                    <!--put form item here-->
-
+                    <repeat group="{{ @navigations }}" value="{{ @navigation }}">
+                        <br>
+                        <input type="radio" id="{{ @navigation }}" name="nav" value="{{ @navigation }}">
+                        <label for="{{ @navigation }}">{{ @navigation }}</label>
+                    </repeat>
 
                 </div>
 
                 <div class="form-group">
+                    <label><strong>Heads up display *</strong></label>
 
-                    <!--put form item here-->
-
+                    <repeat group="{{ @headsUps }}" value="{{ @headsUp }}">
+                        <br>
+                        <input type="radio" id="{{ @headsUp }}" name="head" value="{{ @headsUp }}">
+                        <label for="{{ @headsUp }}">{{ @headsUp }}</label>
+                    </repeat>
 
                 </div>
 
@@ -45,6 +79,8 @@
                         <p class="card-text"><b>Note:</b> All information entered is protected by our <a
                                 href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">privacy policy</a>.
                             Profile information can only be viewed by others with your permission.</p>
+                        <p class="card-text"><b>Required:</b> Anything with a * is required and needs to be filled out.
+                        </p>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@
     <include href="includes/header.html"></include>
 </head>
 <body>
-<div class="card container mt-5">
+<div class="card container m-5">
     <div class="card-body">
 
         <h1>Pick your BMW</h1>
@@ -15,84 +15,36 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
-                    <label for="makeDrop"><strong>Please select the model of your dream BMW</strong></label>
-                    <select class="form-control" id="makeDrop">
-                        <option>Please choose one...</option>
-                        <option>228i</option>
-                        <option>320i</option>
-                        <option>328i</option>
-                        <option>335i</option>
-                        <option>428i</option>
-                        <option>528i</option>
-                        <option>535i</option>
-                        <option>550i</option>
-                        <option>640i</option>
-                        <option>650i</option>
-                        <option>740i</option>
-                        <option>750i</option>
-                        <option>i3</option>
-                        <option>i8</option>
-                        <option>M3</option>
-                        <option>M4</option>
-                        <option>M5</option>
-                        <option>M6</option>
-                        <option>X1</option>
-                        <option>X3</option>
-                        <option>X4</option>
-                        <option>X5</option>
-                        <option>X6</option>
-                        <option>Z4</option>
+                    <label for="makeDrop"><strong>Please select the model of your dream BMW *</strong></label>
+                    <select class="form-control" id="makeDrop" name="makeDrop">
+
+                        <repeat group="{{ @models }}" value="{{ @model }}">
+                            <option value="{{ @model }}">{{ @model }}</option>
+                        </repeat>
+
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="yearDrop"><strong>Please select a year</strong></label>
-                    <select class="form-control" id="yearDrop">
-                        <option>Please choose one...</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
-                        <option value="2007">2007</option>
-                        <option value="2006">2006</option>
-                        <option value="2005">2005</option>
-                        <option value="2004">2004</option>
-                        <option value="2003">2003</option>
-                        <option value="2002">2002</option>
-                        <option value="2001">2001</option>
-                        <option value="2000">2000</option>
-                        <option value="1999">1999</option>
-                        <option value="1998">1998</option>
-                        <option value="1997">1997</option>
-                        <option value="1996">1996</option>
-                        <option value="1995">1995</option>
-                        <option value="1994">1994</option>
-                        <option value="1993">1993</option>
-                        <option value="1992">1992</option>
-                        <option value="1991">1991</option>
-                        <option value="1990">1990</option>
+                    <label for="yearDrop"><strong>Please select a year *</strong></label>
+                    <select class="form-control" id="yearDrop" name="yearDrop">
+
+                        <repeat group="{{ @years }}" value="{{ @year }}">
+                            <option value="{{ @year }}">{{ @year }}</option>
+                        </repeat>
+
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label><strong>Drive-train</strong></label>
-                    <div class="form-group">
-                        <input type="radio" id="allWheel" name="driveTrain" value="allWheel">
-                        <label for="allWheel">All Wheel Drive</label><br>
-                        <input type="radio" id="rearWheel" name="driveTrain" value="rearWheel">
-                        <label for="rearWheel">Rear Wheel Drive</label><br>
-                        <input type="radio" id="frontWheel" name="driveTrain" value="frontWheel">
-                        <label for="frontWheel">Front Wheel Drive</label>
-                    </div>
+                    <label><strong>Drive-train *</strong></label>
+
+                    <repeat group="{{ @wheels }}" value="{{ @wheel }}">
+                        <br>
+                        <input type="radio" id="{{ @wheel }}" name="driveTrain" value="{{ @wheel }}">
+                        <label for="{{ @wheel }}">{{ @wheel }}</label>
+                    </repeat>
+
                 </div>
             </div>
 
@@ -103,6 +55,8 @@
                                 href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">privacy
                             policy</a>.
                             Profile information can only be viewed by others with your permission.</p>
+                        <p class="card-text"><b>Required:</b> Anything with a * is required and needs to be filled out.
+                        </p>
                     </div>
                 </div>
             </div>
