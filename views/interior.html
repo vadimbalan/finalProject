@@ -18,23 +18,37 @@
                 <div class="form-group">
                     <label for="leather"><strong>Select the type of leather desired *</strong></label>
                     <select class="form-control" id="leather" name="leather">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @leathers }}" value="{{ @leather }}">
                             <option value="{{ @leather }}">{{ @leather }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['leather']) }}">
+                                {{ @errors['leather'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
                     <label for="seats"><strong>Select the number of seats *</strong></label>
                     <select class="form-control" id="seats" name="seats">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @seats }}" value="{{ @seat }}">
                             <option value="{{ @seat }}">{{ @seat }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['seats']) }}">
+                                {{ @errors['seats'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
@@ -45,6 +59,12 @@
                         <input type="radio" id="{{ @stereo }}" name="stereo" value="{{ @stereo }}">
                         <label for="{{ @stereo }}">{{ @stereo }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['stereo']) }}">
+                                {{ @errors['stereo'] }}
+                            </check>
+                    </span>
 
                 </div>
 
@@ -56,6 +76,12 @@
                         <input type="radio" id="{{ @navigation }}" name="nav" value="{{ @navigation }}">
                         <label for="{{ @navigation }}">{{ @navigation }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['nav']) }}">
+                                {{ @errors['nav'] }}
+                            </check>
+                    </span>
 
                 </div>
 
@@ -67,6 +93,12 @@
                         <input type="radio" id="{{ @headsUp }}" name="head" value="{{ @headsUp }}">
                         <label for="{{ @headsUp }}">{{ @headsUp }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['head']) }}">
+                                {{ @errors['head'] }}
+                            </check>
+                    </span>
 
                 </div>
 

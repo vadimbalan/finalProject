@@ -17,23 +17,37 @@
                 <div class="form-group">
                     <label for="makeDrop"><strong>Please select the model of your dream BMW *</strong></label>
                     <select class="form-control" id="makeDrop" name="makeDrop">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @models }}" value="{{ @model }}">
                             <option value="{{ @model }}">{{ @model }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['makeDrop']) }}">
+                                {{ @errors['makeDrop'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
                     <label for="yearDrop"><strong>Please select a year *</strong></label>
                     <select class="form-control" id="yearDrop" name="yearDrop">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @years }}" value="{{ @year }}">
                             <option value="{{ @year }}">{{ @year }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['yearDrop']) }}">
+                                {{ @errors['yearDrop'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
@@ -44,6 +58,12 @@
                         <input type="radio" id="{{ @wheel }}" name="driveTrain" value="{{ @wheel }}">
                         <label for="{{ @wheel }}">{{ @wheel }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['driveTrain']) }}">
+                                {{ @errors['driveTrain'] }}
+                            </check>
+                    </span>
 
                 </div>
             </div>

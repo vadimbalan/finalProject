@@ -17,12 +17,20 @@
                 <div class="form-group">
                     <label for="rimDrop"><strong>Select the size of the rims *</strong></label>
                     <select class="form-control" id="rimDrop" name="rimDrop">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @rims }}" value="{{ @rim }}">
                             <option value="{{ @rim }}">{{ @rim }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['rimDrop']) }}">
+                                {{ @errors['rimDrop'] }}
+                            </check>
+                    </span>
+
                 </div>
 
                 <div class="form-group">
@@ -33,40 +41,67 @@
                         <input type="radio" id="{{ @spinner }}" name="spinners" value="{{ @spinner }}">
                         <label for="{{ @spinner }}">{{ @spinner }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['spinners']) }}">
+                                {{ @errors['spinners'] }}
+                            </check>
+                    </span>
 
                 </div>
 
                 <div class="form-group">
                     <label for="colorCar"><strong>Select color of the vehicle *</strong></label>
                     <select class="form-control" id="colorCar" name="colorCar">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @colors }}" value="{{ @color }}">
                             <option value="{{ @color }}">{{ @color }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['colorCar']) }}">
+                                {{ @errors['colorCar'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
                     <label for="exhaust"><strong>Select exhaust type *</strong></label>
                     <select class="form-control" id="exhaust" name="exhaust">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @exhausts }}" value="{{ @exhaust }}">
                             <option value="{{ @exhaust }}">{{ @exhaust }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['exhaust']) }}">
+                                {{ @errors['exhaust'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
                     <label for="engine"><strong>Select the type of engine *</strong></label>
                     <select class="form-control" id="engine" name="engine">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @engines }}" value="{{ @engine }}">
                             <option value="{{ @engine }}">{{ @engine }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['engine']) }}">
+                                {{ @errors['engine'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
@@ -78,6 +113,12 @@
                                value="{{ @transmission }}">
                         <label for="{{ @transmission }}">{{ @transmission }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['transmission']) }}">
+                                {{ @errors['transmission'] }}
+                            </check>
+                    </span>
 
                 </div>
 

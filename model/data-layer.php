@@ -6,7 +6,7 @@
  */
 function getModel()
 {
-    $models = array("-- Please choose one --", "228i", "320i", "328i", "335i", "428i", "528i", "535i", "550i", "640i", "650i", "740i", "750i", "i3", "i8", "M3", "M4", "M5", "M6", "X1", "X3", "X4", "X5", "X6", "Z4");
+    $models = array("228i", "320i", "328i", "335i", "428i", "528i", "535i", "550i", "640i", "650i", "740i", "750i", "i3", "i8", "M3", "M4", "M5", "M6", "X1", "X3", "X4", "X5", "X6", "Z4");
     return $models;
 }
 
@@ -17,7 +17,7 @@ function getModel()
  */
 function getYear()
 {
-    $years = array("-- Please choose one --", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990");
+    $years = array("2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990");
     return $years;
 }
 
@@ -39,7 +39,7 @@ function getWheel()
  */
 function getRim()
 {
-    $rims = array("-- Please choose one --", "Stock Rim Size", "16'", "17'", "18'", "19'", "20'", "21'", "22'", "23'", "24'", "25'", "26'");
+    $rims = array("Stock Rim Size", "16'", "17'", "18'", "19'", "20'", "21'", "22'", "23'", "24'", "25'", "26'");
     return $rims;
 }
 
@@ -61,7 +61,7 @@ function getSpinner()
  */
 function getColor()
 {
-    $colors = array("-- Please choose one --", "White", "Black", "Yellow", "Gray", "Imperial Blue", "Pink", "Orange", "Green", "Purple", "Sky Blue", "Brown");
+    $colors = array("White", "Black", "Yellow", "Gray", "Imperial Blue", "Pink", "Orange", "Green", "Purple", "Sky Blue", "Brown");
     return $colors;
 }
 
@@ -72,7 +72,7 @@ function getColor()
  */
 function getExhaust()
 {
-    $exhaust = array("-- Please choose one --", "Stock Exhaust System", "MagnaFLow", "Flowmaster American Thunder", "Heartthrob Exhaust System", "Borla", "MBRP", "Corsa", "PaceSetter", "JBA", "Invidia");
+    $exhaust = array("Stock Exhaust System", "MagnaFLow", "Flowmaster American Thunder", "Heartthrob Exhaust System", "Borla", "MBRP", "Corsa", "PaceSetter", "JBA", "Invidia");
     return $exhaust;
 }
 
@@ -83,7 +83,7 @@ function getExhaust()
  */
 function getEngine()
 {
-    $engine = array("-- Please choose one --", "S55 (3.0 Liter Twin Turbocharged I6)", "S63 (4.4 Liter Twin Turbocharged V8)", "S65 (4.0 Liter Naturally Aspirated V8)", "M88 (3.5 Liter Naturally Aspirated I6)", "S70/2 (6.1 Liter Naturally Aspirated V12)", "Electric (Varies)");
+    $engine = array("S55 (3.0 Liter Twin Turbocharged I6)", "S63 (4.4 Liter Twin Turbocharged V8)", "S65 (4.0 Liter Naturally Aspirated V8)", "M88 (3.5 Liter Naturally Aspirated I6)", "S70/2 (6.1 Liter Naturally Aspirated V12)", "Electric (Varies)");
     return $engine;
 }
 
@@ -105,7 +105,7 @@ function getTransmission()
  */
 function getLeather()
 {
-    $leather = array("-- Please choose one --", "Stock Leather", "Nylon", "Polyester", "Vinyl", "Faux materials", "Brown Leather (Black stitching)", "Black Leather (Red stitching)", "Red Leather (Black stitching)", "White Leather (White stitching)", "White Leather (Red stitching)", "White Leather (Black stitching)", "Tan Leather (Black Stitching)");
+    $leather = array("Stock Leather", "Nylon", "Polyester", "Vinyl", "Faux materials", "Brown Leather (Black stitching)", "Black Leather (Red stitching)", "Red Leather (Black stitching)", "White Leather (White stitching)", "White Leather (Red stitching)", "White Leather (Black stitching)", "Tan Leather (Black Stitching)");
     return $leather;
 }
 
@@ -116,7 +116,7 @@ function getLeather()
  */
 function getSeat()
 {
-    $seats = array("-- Please choose one --", "2 seats 2 doors", "2 seats 4 doors", "5 seats 2 doors", "5 seats 4 doors", "8 seats 4 doors");
+    $seats = array("2 seats 2 doors", "2 seats 4 doors", "5 seats 2 doors", "5 seats 4 doors", "8 seats 4 doors");
     return $seats;
 }
 
