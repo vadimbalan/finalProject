@@ -25,8 +25,48 @@ $f3->route('GET /', function () {
 // Basic information page
 $f3->route('GET|POST /information', function ($f3) {
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $f3->reroute('car');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        //array(4) { ["fName"]=> string(0) "" ["lName"]=> string(0) "" ["phone"]=> string(0) "" ["email"]=> string(0) "" }
+        //var_dump($_POST);
+
+        // Validate first name
+        if (!validName($_POST['fName']))
+        {
+            //Set an error variable in the F3 hive
+            $f3->set('errors["fName"]', "Invalid first name");
+        }
+        // Validate last name
+        if (!validName($_POST['lName']))
+        {
+            //Set an error variable in the F3 hive
+            $f3->set('errors["lName"]', "Invalid last name");
+        }
+        // Validate phone number
+        if (!validPhone($_POST['phone']))
+        {
+            //Set an error variable in the F3 hive
+            $f3->set('errors["phone"]', "Invalid phone number");
+        }
+        // Validate email address
+        if (!validEmail($_POST['email']))
+        {
+            //Set an error variable in the F3 hive
+            $f3->set('errors["email"]', "Invalid email");
+        }
+        // Data is valid
+        if (empty($f3->get('errors')))
+        {
+            //Store the data in the session array
+            $_SESSION['fName'] = $_POST['fName'];
+            $_SESSION['lName'] = $_POST['lName'];
+            $_SESSION['phone'] = $_POST['phone'];
+            $_SESSION['email'] = $_POST['email'];
+
+            // Reroute to the next page
+            $f3->reroute('car');
+        }
+
     }
 
     $view = new Template();

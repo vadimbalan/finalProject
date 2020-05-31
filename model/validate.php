@@ -46,3 +46,21 @@ function validEmail($email)
         return false;
     }
 }
+
+/* Return a value indicating if model of bmw parameter is valid
+ * Valid phone is in an array
+ * @param string model
+ * @return boolean
+ */
+function validModel($email)
+{
+    if(filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
