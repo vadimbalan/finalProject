@@ -6,7 +6,7 @@
     <include href="includes/header.html"></include>
 </head>
 <body>
-<div class="card container m-5">
+<div class="card container mb-5">
     <div class="card-body">
 
         <h1>Design the exterior of your BMW</h1>
@@ -15,58 +15,103 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
-                    <label for="rimDrop"><strong>Select the size of the rims *</strong></label>
+                    <label for="rimDrop"><strong>Select the size of the rims </strong><b class="err">*</b></label>
                     <select class="form-control" id="rimDrop" name="rimDrop">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @rims }}" value="{{ @rim }}">
-                            <option value="{{ @rim }}">{{ @rim }}</option>
+                            <option value="{{ @rim }}"
+                            <check if="{{ @rim == @selectedRim }}">selected="selected"</check>
+                            >{{ @rim }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['rimDrop']) }}">
+                                {{ @errors['rimDrop'] }}
+                            </check>
+                    </span>
+
                 </div>
 
                 <div class="form-group">
-                    <label><strong>Add spinners to the rim? *</strong></label>
+                    <label><strong>Add spinners to the rim? </strong><b class="err">*</b></label>
 
                     <repeat group="{{ @spinners }}" value="{{ @spinner }}">
                         <br>
-                        <input type="radio" id="{{ @spinner }}" name="spinners" value="{{ @spinner }}">
+                        <input type="radio" id="{{ @spinner }}" name="spinners" value="{{ @spinner }}"
+                        <check if="{{ @spinner == @selectedSpinner }}">checked="checked"</check>
+                        >
                         <label for="{{ @spinner }}">{{ @spinner }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['spinners']) }}">
+                                {{ @errors['spinners'] }}
+                            </check>
+                    </span>
 
                 </div>
 
                 <div class="form-group">
-                    <label for="colorCar"><strong>Select color of the vehicle *</strong></label>
+                    <label for="colorCar"><strong>Select color of the vehicle </strong><b class="err">*</b></label>
                     <select class="form-control" id="colorCar" name="colorCar">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @colors }}" value="{{ @color }}">
-                            <option value="{{ @color }}">{{ @color }}</option>
+                            <option value="{{ @color }}"
+                            <check if="{{ @color == @selectedColor }}">selected="selected"</check>
+                            >{{ @color }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['colorCar']) }}">
+                                {{ @errors['colorCar'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
-                    <label for="exhaust"><strong>Select exhaust type *</strong></label>
+                    <label for="exhaust"><strong>Select exhaust type </strong><b class="err">*</b></label>
                     <select class="form-control" id="exhaust" name="exhaust">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @exhausts }}" value="{{ @exhaust }}">
-                            <option value="{{ @exhaust }}">{{ @exhaust }}</option>
+                            <option value="{{ @exhaust }}"
+                            <check if="{{ @exhaust == @selectedExhaust }}">selected="selected"</check>
+                            >{{ @exhaust }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['exhaust']) }}">
+                                {{ @errors['exhaust'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
-                    <label for="engine"><strong>Select the type of engine *</strong></label>
+                    <label for="engine"><strong>Select the type of engine </strong><b class="err">*</b></label>
                     <select class="form-control" id="engine" name="engine">
+                        <option value="-- Please choose one --">-- Please choose one --</option>
 
                         <repeat group="{{ @engines }}" value="{{ @engine }}">
-                            <option value="{{ @engine }}">{{ @engine }}</option>
+                            <option value="{{ @engine }}"
+                            <check if="{{ @engine == @selectedEngine }}">selected="selected"</check>
+                            >{{ @engine }}</option>
                         </repeat>
 
                     </select>
+
+                    <span class="err">
+                            <check if="{{ isset(@errors['engine']) }}">
+                                {{ @errors['engine'] }}
+                            </check>
+                    </span>
                 </div>
 
                 <div class="form-group">
@@ -75,15 +120,23 @@
                     <repeat group="{{ @transmissions }}" value="{{ @transmission }}">
                         <br>
                         <input type="radio" id="{{ @transmission }}" name="transmission"
-                               value="{{ @transmission }}">
+                               value="{{ @transmission }}"
+                        <check if="{{ @transmission == @selectedTransmission }}">checked="checked"</check>
+                        >
                         <label for="{{ @transmission }}">{{ @transmission }}</label>
                     </repeat>
+                    <br>
+                    <span class="err">
+                            <check if="{{ isset(@errors['transmission']) }}">
+                                {{ @errors['transmission'] }}
+                            </check>
+                    </span>
 
                 </div>
 
-                <label for="costumeExterior"><strong>List any costume you want to add</strong></label>
+                <label for="costumeExterior"><strong>List anything custom you want added</strong></label>
                 <textarea class="form-control" id="costumeExterior" rows="5" name="costumeExterior"
-                          placeholder="Add anything costume..."></textarea>
+                          placeholder="Add anything custom...">{{ @costumeExterior }}</textarea>
 
             </div>
 
@@ -93,7 +146,7 @@
                         <p class="card-text"><b>Note:</b> All information entered is protected by our <a
                                 href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">privacy policy</a>.
                             Profile information can only be viewed by others with your permission.</p>
-                        <p class="card-text"><b>Required:</b> Anything with a * is required and needs to be filled out.
+                        <p class="card-text"><b>Required:</b> Anything with a <b class="err">*</b> is required and needs to be filled out.
                         </p>
                     </div>
                 </div>

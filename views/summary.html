@@ -6,13 +6,54 @@
     <include href="includes/header.html"></include>
 </head>
 <body>
-<div class="card container m-5">
+<div class="card container mb-5">
     <div class="card-body">
 
-        <h1>Order Summary</h1>
+        <h1 class="pb-2">Summary</h1>
+
+        <ul class="list-group">
+            <li class="list-group-item active bg-dark border-dark">Information</li>
+            <li class="list-group-item">Name: {{ @SESSION.fName }} {{ @SESSION.lName }}</li>
+            <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
+            <li class="list-group-item">Email: {{ @SESSION.email }}</li>
+        </ul>
+
         <hr>
 
-        <p>Here's your order summary: </p>
+        <ul class="list-group">
+            <li class="list-group-item active bg-dark border-dark">Car</li>
+            <li class="list-group-item">Model/Make: {{ @SESSION.model }}</li>
+            <li class="list-group-item">Make year: {{ @SESSION.year }}</li>
+            <li class="list-group-item">Drivetrain: {{ @SESSION.driveTrain }}</li>
+        </ul>
+
+        <hr>
+
+        <ul class="list-group">
+            <li class="list-group-item active bg-dark border-dark">Exterior</li>
+            <li class="list-group-item">Rim: {{ @SESSION.rim }}</li>
+            <li class="list-group-item">Spinner: {{ @SESSION.spinner }}</li>
+            <li class="list-group-item">Color: {{ @SESSION.color }}</li>
+            <li class="list-group-item">Exhaust: {{ @SESSION.exhaust }}</li>
+            <li class="list-group-item">Engine: {{ @SESSION.engine }}</li>
+            <li class="list-group-item">Transmission: {{ @SESSION.transmission }}</li>
+
+            <check if="{{ !empty(@SESSION.costumeExterior) }}">
+                <li class="list-group-item">Costume Exterior: {{ @SESSION.costumeExterior }}</li>
+            </check>
+
+        </ul>
+
+        <hr>
+
+        <ul class="list-group">
+            <li class="list-group-item active bg-dark border-dark">Interior</li>
+            <li class="list-group-item">Leather: {{ @SESSION.leather }}</li>
+            <li class="list-group-item">Seat: {{ @SESSION.seat }}</li>
+            <li class="list-group-item">Stereo: {{ @SESSION.stereo }}</li>
+            <li class="list-group-item">Navigation: {{ @SESSION.navigation }}</li>
+            <li class="list-group-item">Heads Up Display: {{ @SESSION.headsUp }}</li>
+        </ul>
 
     </div>
 </div>
