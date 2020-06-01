@@ -28,8 +28,8 @@ function getYear()
  */
 function getWheel()
 {
-    $wheels = array("All Wheel Drive", "Rear Wheel Drive", "Front Wheel Drive", "Can pick between all/front/rear drive at the push of a button");
-    return $wheels;
+    $driveTrain = array("All Wheel Drive", "Rear Wheel Drive", "Front Wheel Drive", "Can pick between all/front/rear drive at the push of a button");
+    return $driveTrain;
 }
 
 

@@ -25,38 +25,31 @@ $f3->route('GET /', function () {
 // Basic information page
 $f3->route('GET|POST /information', function ($f3) {
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        //array(4) { ["fName"]=> string(0) "" ["lName"]=> string(0) "" ["phone"]=> string(0) "" ["email"]=> string(0) "" }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //var_dump($_POST);
 
         // Validate first name
-        if (!validName($_POST['fName']))
-        {
+        if (!validName($_POST['fName'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["fName"]', "Invalid first name");
         }
         // Validate last name
-        if (!validName($_POST['lName']))
-        {
+        if (!validName($_POST['lName'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["lName"]', "Invalid last name");
         }
         // Validate phone number
-        if (!validPhone($_POST['phone']))
-        {
+        if (!validPhone($_POST['phone'])) {
             //Set an error variable in the F3 hive
-            $f3->set('errors["phone"]', "Invalid phone number");
+            $f3->set('errors["phone"]', "A valid phone number contains numbers between 0 and 9, 10 digits, with no punctuation");
         }
         // Validate email address
-        if (!validEmail($_POST['email']))
-        {
+        if (!validEmail($_POST['email'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["email"]', "Invalid email");
         }
         // Data is valid
-        if (empty($f3->get('errors')))
-        {
+        if (empty($f3->get('errors'))) {
             //Store the data in the session array
             $_SESSION['fName'] = $_POST['fName'];
             $_SESSION['lName'] = $_POST['lName'];
@@ -69,6 +62,12 @@ $f3->route('GET|POST /information', function ($f3) {
 
     }
 
+    $f3->set('fName', $_POST['fName']);
+    $f3->set('lName', $_POST['lName']);
+    $f3->set('phone', $_POST['phone']);
+    $f3->set('email', $_POST['email']);
+
+
     $view = new Template();
     echo $view->render('views/information.html');
 });
@@ -77,36 +76,30 @@ $f3->route('GET|POST /information', function ($f3) {
 $f3->route('GET|POST /car', function ($f3) {
 
     //If the form has been submitted
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //var_dump($_POST);
-        //array(2) { ["makeDrop"]=> string(23) "-- Please choose one --" ["yearDrop"]=> string(23) "-- Please choose one --" }
 
         // Validate the model
-        if (!validModel($_POST['makeDrop']))
-        {
+        if (!validModel($_POST['makeDrop'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["makeDrop"]', "Please pick an item from the dropdown menu");
         }
         // Validate the year
-        if (!validYear($_POST['yearDrop']))
-        {
+        if (!validYear($_POST['yearDrop'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["yearDrop"]', "Please pick an item from the dropdown menu");
         }
         // Validate the drive-train option
-        if (!validDriveTrain($_POST['driveTrain']))
-        {
+        if (!validDriveTrain($_POST['driveTrain'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["driveTrain"]', "Please pick a drive-train option");
         }
         // Data is valid
-        if (empty($f3->get('errors')))
-        {
+        if (empty($f3->get('errors'))) {
             //Store the data in the session array
             $_SESSION['model'] = $_POST['makeDrop'];
             $_SESSION['year'] = $_POST['yearDrop'];
-            $_SESSION['wheel'] = $_POST['driveTrain'];
+            $_SESSION['driveTrain'] = $_POST['driveTrain'];
 
             //Redirect to exterior page
             $f3->reroute('exterior');
@@ -114,8 +107,11 @@ $f3->route('GET|POST /car', function ($f3) {
     }
 
     $f3->set('models', getModel());
+    $f3->set('selectedModel', $_POST['makeDrop']);
     $f3->set('years', getYear());
-    $f3->set('wheels', getWheel());
+    $f3->set('selectedYear', $_POST['yearDrop']);
+    $f3->set('driveTrains', getWheel());
+    $f3->set('selectedDriveTrain', $_POST['driveTrain']);
 
     $view = new Template();
     echo $view->render('views/car.html');
@@ -124,53 +120,41 @@ $f3->route('GET|POST /car', function ($f3) {
 // Information about exterior of car
 $f3->route('GET|POST /exterior', function ($f3) {
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        //array(5) { ["rimDrop"]=>
-        // string(23) "-- Please choose one --" ["colorCar"]=>
-        // string(23) "-- Please choose one --" ["exhaust"]=>
-        // string(23) "-- Please choose one --" ["engine"]=>
-        // string(23) "-- Please choose one --" ["costumeExterior"]=> string(0) "" }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //var_dump($_POST);
+
         // Validate the size of the rims
-        if (!validRim($_POST['rimDrop']))
-        {
+        if (!validRim($_POST['rimDrop'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["rimDrop"]', "Please select a rim size");
         }
         // Validate if the customer wants spinners added on vehicle
-        if (!validSpinner($_POST['spinners']))
-        {
+        if (!validSpinner($_POST['spinners'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["spinners"]', "Please select a rim size");
         }
         // Validate the color of the vehicle
-        if (!validColor($_POST['colorCar']))
-        {
+        if (!validColor($_POST['colorCar'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["colorCar"]', "Please select color of vehicle");
         }
         // Validate the type of exhaust
-        if (!validExhaust($_POST['exhaust']))
-        {
+        if (!validExhaust($_POST['exhaust'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["exhaust"]', "Please select the type of exhaust");
         }
         // Validate the type of engine
-        if (!validEngine($_POST['engine']))
-        {
+        if (!validEngine($_POST['engine'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["engine"]', "Please select the type of engine");
         }
         // Validate the type of transmission
-        if (!validTransmission($_POST['transmission']))
-        {
+        if (!validTransmission($_POST['transmission'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["transmission"]', "Please select the type of transmission");
         }
         // Data is valid
-        if (empty($f3->get('errors')))
-        {
+        if (empty($f3->get('errors'))) {
             //Store the data in the session array
             $_SESSION['rim'] = $_POST['rimDrop'];
             $_SESSION['spinner'] = $_POST['spinners'];
@@ -185,11 +169,18 @@ $f3->route('GET|POST /exterior', function ($f3) {
     }
 
     $f3->set('rims', getRim());
+    $f3->set('selectedRim', $_POST['rimDrop']);
     $f3->set('spinners', getSpinner());
+    $f3->set('selectedSpinner', $_POST['spinners']);
     $f3->set('colors', getColor());
+    $f3->set('selectedColor', $_POST['colorCar']);
     $f3->set('exhausts', getExhaust());
+    $f3->set('selectedExhaust', $_POST['exhaust']);
     $f3->set('engines', getEngine());
+    $f3->set('selectedEngine', $_POST['engine']);
     $f3->set('transmissions', getTransmission());
+    $f3->set('selectedTransmission', $_POST['transmission']);
+    $f3->set('costumeExterior', $_POST['costumeExterior']);
 
     $view = new Template();
     echo $view->render('views/exterior.html');
@@ -198,8 +189,7 @@ $f3->route('GET|POST /exterior', function ($f3) {
 // Information about interior of car
 $f3->route('GET|POST /interior', function ($f3) {
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //array(5) { ["leather"]=> string(5) "Vinyl"
         // ["seats"]=> string(15) "2 seats 2 doors"
         // ["stereo"]=> string(14) "Bang & Olufsen"
@@ -207,39 +197,33 @@ $f3->route('GET|POST /interior', function ($f3) {
         // ["head"]=> string(37) "No, don't add heads up display system" }
         //var_dump($_POST);
         // Validate the type of leather desired
-        if (!validLeather($_POST['leather']))
-        {
+        if (!validLeather($_POST['leather'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["leather"]', "Please select a leather type");
         }
         // Validate the number of seats
-        if (!validSeats($_POST['seats']))
-        {
+        if (!validSeats($_POST['seats'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["seats"]', "Please select number of seats");
         }
         // Validate the type of stereo system
-        if (!validStereo($_POST['stereo']))
-        {
+        if (!validStereo($_POST['stereo'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["stereo"]', "Please select type of stereo system");
         }
         // Validate the type of navigation system
-        if (!validNav($_POST['nav']))
-        {
+        if (!validNav($_POST['nav'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["nav"]', "Plase select if you would like a navigation system");
         }
         // Validate the type of heads up display
-        if (!validHead($_POST['head']))
-        {
+        if (!validHead($_POST['head'])) {
             //Set an error variable in the F3 hive
             $f3->set('errors["head"]', "Please select if you would like a heads up system");
         }
 
         // Data is valid
-        if (empty($f3->get('errors')))
-        {
+        if (empty($f3->get('errors'))) {
             //Store the data in the session array
             $_SESSION['leather'] = $_POST['leather'];
             $_SESSION['seat'] = $_POST['seats'];
@@ -252,10 +236,15 @@ $f3->route('GET|POST /interior', function ($f3) {
     }
 
     $f3->set('leathers', getLeather());
+    $f3->set('selectedLeather', $_POST['leather']);
     $f3->set('seats', getSeat());
+    $f3->set('selectedSeat', $_POST['seats']);
     $f3->set('stereos', getStereo());
+    $f3->set('selectedStereo', $_POST['stereo']);
     $f3->set('navigations', getNavigation());
+    $f3->set('selectedNavigation', $_POST['nav']);
     $f3->set('headsUps', getHeadsUp());
+    $f3->set('selectedHeadsUp', $_POST['head']);
 
     $view = new Template();
     echo $view->render('views/interior.html');

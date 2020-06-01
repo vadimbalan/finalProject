@@ -14,20 +14,14 @@ function validName($name)
 }
 
 /* Return a value indicating if email parameter is valid
- * Valid phone is 123-123-1234
+ * Valid phone numbers are numbers between 0 and 9, 10 digits, with no punctuation
  * @param int phone
  * @return boolean
  */
 function validPhone($phone)
 {
-    if(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    $phone = str_replace(' ', '', $phone);
+    return !empty($phone) && preg_match("/^\d{10}$/", $phone);
 }
 
 /* Return a value indicating if email parameter is valid
@@ -37,14 +31,8 @@ function validPhone($phone)
  */
 function validEmail($email)
 {
-    if(filter_var($email, FILTER_VALIDATE_EMAIL))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    $email = str_replace(' ', '', $email);
+    return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 /* Return a value indicating if model of bmw parameter is valid
@@ -53,11 +41,7 @@ function validEmail($email)
  */
 function validModel($model)
 {
-    if (!in_array($model, getModel()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($model, getModel());
 }
 
 /* Return a value indicating if year parameter is valid
@@ -66,11 +50,7 @@ function validModel($model)
  */
 function validYear($year)
 {
-    if (!in_array($year, getYear()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($year, getYear());
 }
 
 /* Return a value indicating if drive-train parameter is valid
@@ -79,11 +59,7 @@ function validYear($year)
  */
 function validDriveTrain($drive)
 {
-    if (!in_array($drive, getWheel()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($drive, getWheel());
 }
 
 /* Return a value indicating if rim size parameter is valid
@@ -92,11 +68,7 @@ function validDriveTrain($drive)
  */
 function validRim($rim)
 {
-    if (!in_array($rim, getRim()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($rim, getRim());
 }
 
 /* Return a value indicating if to add spinners is valid
@@ -105,11 +77,7 @@ function validRim($rim)
  */
 function validSpinner($spinner)
 {
-    if (!in_array($spinner, getSpinner()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($spinner, getSpinner());
 }
 
 /* Return a value indicating if color of vehicle is valid
@@ -118,11 +86,7 @@ function validSpinner($spinner)
  */
 function validColor($color)
 {
-    if (!in_array($color, getColor()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($color, getColor());
 }
 
 /* Return a value indicating if exhaust type is valid
@@ -131,11 +95,7 @@ function validColor($color)
  */
 function validExhaust($exhaust)
 {
-    if (!in_array($exhaust, getExhaust()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($exhaust, getExhaust());
 }
 
 /* Return a value indicating if engine type is valid
@@ -144,11 +104,7 @@ function validExhaust($exhaust)
  */
 function validEngine($engine)
 {
-    if (!in_array($engine, getEngine()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($engine, getEngine());
 }
 
 /* Return a value indicating if transmission type is valid
@@ -157,11 +113,7 @@ function validEngine($engine)
  */
 function validTransmission($transmission)
 {
-    if (!in_array($transmission, getTransmission()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($transmission, getTransmission());
 }
 
 /* Return a value indicating if leather type is valid
@@ -170,11 +122,7 @@ function validTransmission($transmission)
  */
 function validLeather($leather)
 {
-    if (!in_array($leather, getLeather()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($leather, getLeather());
 }
 
 /* Return a value indicating if leather type is valid
@@ -183,11 +131,7 @@ function validLeather($leather)
  */
 function validSeats($seats)
 {
-    if (!in_array($seats, getSeat()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($seats, getSeat());
 }
 
 /* Return a value indicating if leather type is valid
@@ -196,11 +140,7 @@ function validSeats($seats)
  */
 function validStereo($stereo)
 {
-    if (!in_array($stereo, getStereo()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($stereo, getStereo());
 }
 
 /* Return a value indicating if nav type is valid
@@ -209,11 +149,7 @@ function validStereo($stereo)
  */
 function validNav($nav)
 {
-    if (!in_array($nav, getNavigation()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($nav, getNavigation());
 }
 
 /* Return a value indicating if heads up display type is valid
@@ -222,11 +158,7 @@ function validNav($nav)
  */
 function validHead($head)
 {
-    if (!in_array($head, getHeadsUp()))
-    {
-        return false;
-    }
-    return true;
+    return in_array($head, getHeadsUp());
 }
 
 
