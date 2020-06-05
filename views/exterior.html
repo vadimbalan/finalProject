@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label><strong>Transmission *</strong></label>
+                    <label><strong>Transmission </strong><b class="err">*</b></label>
 
                     <repeat group="{{ @transmissions }}" value="{{ @transmission }}">
                         <br>
@@ -134,9 +134,9 @@
 
                 </div>
 
-                <label for="costumeExterior"><strong>List anything custom you want added</strong></label>
+                <label for="costumeExterior"><strong>Is there any thing else you want to add to the car?</strong></label>
                 <textarea class="form-control" id="costumeExterior" rows="5" name="costumeExterior"
-                          placeholder="Add anything custom...">{{ @costumeExterior }}</textarea>
+                          placeholder="(optional)">{{ @costumeExterior }}</textarea>
 
             </div>
 
