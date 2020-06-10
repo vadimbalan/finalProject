@@ -249,7 +249,7 @@ class Controller
                 $_SESSION['navigation'] = $_POST['nav'];
                 $_SESSION['headsUp'] = $_POST['head'];
 
-                if($_SESSION['suv'] instanceof SUV)
+                if($_SESSION['car'] instanceof SUV)
                 {
                     $this->_f3->reroute('/suv');
                 }
