@@ -37,26 +37,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="seats"><strong>Select the number of seats </strong><b class="err">*</b></label>
-                    <select class="form-control" id="seats" name="seats">
-                        <option value="-- Please choose one --">-- Please choose one --</option>
-
-                        <repeat group="{{ @seats }}" value="{{ @seat }}">
-                            <option value="{{ @seat }}"
-                            <check if="{{ @seat == @selectedSeat }}">selected="selected"</check>
-                            >{{ @seat }}</option>
-                        </repeat>
-
-                    </select>
-
-                    <span class="err">
-                            <check if="{{ isset(@errors['seats']) }}">
-                                {{ @errors['seats'] }}
-                            </check>
-                    </span>
-                </div>
-
-                <div class="form-group">
                     <label><strong>Stereo System </strong><b class="err">*</b></label>
 
                     <repeat group="{{ @stereos }}" value="{{ @stereo }}">

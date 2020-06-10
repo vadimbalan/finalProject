@@ -16,22 +16,22 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
-                    <label for="leather"><strong>Select the type of leather desired </strong><b
+                    <label for="wheels"><strong>Select the number of wheels desired </strong><b
                             class="err">*</b></label>
-                    <select class="form-control" id="leather" name="leather">
+                    <select class="form-control" id="wheels" name="wheels">
                         <option value="-- Please choose one --">-- Please choose one --</option>
 
-                        <repeat group="{{ @leathers }}" value="{{ @leather }}">
-                            <option value="{{ @leather }}"
-                            <check if="{{ @leather == @selectedLeather }}">selected="selected"</check>
-                            >{{ @leather }}</option>
+                        <repeat group="{{ @wheels }}" value="{{ @wheel }}">
+                            <option value="{{ @wheel }}"
+                            <check if="{{ @wheel == @selectedWheel }}">selected="selected"</check>
+                            >{{ @wheel }}</option>
                         </repeat>
 
                     </select>
 
                     <span class="err">
-                            <check if="{{ isset(@errors['leather']) }}">
-                                {{ @errors['leather'] }}
+                            <check if="{{ isset(@errors['wheels']) }}">
+                                {{ @errors['wheels'] }}
                             </check>
                     </span>
                 </div>

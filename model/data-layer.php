@@ -39,7 +39,7 @@ function getWheel()
  */
 function getRim()
 {
-    $rims = array("Stock Rim Size", "16'", "17'", "18'", "19'", "20'", "21'", "22'", "23'", "24'", "25'", "26'");
+    $rims = array("Stock Rim Size", "16''", "17''", "18''", "19''", "20''", "21''", "22''", "23''", "24''", "25''", "26''");
     return $rims;
 }
 
@@ -159,6 +159,7 @@ function getHeadsUp()
  */
 function getNumWheels()
 {
-    $wheels = array("4 wheels", "2 wheels in the front, 4 in the back", "4 wheels in the front, 2 in the back");
+    $wheels = array("4 wheels, 2 axles", "2 wheels in the front (1 axle), 4 in the back (2 axles)",
+        "4 wheels in the front (2 axles) , 2 in the back (1 axle)");
     return $wheels;
 }

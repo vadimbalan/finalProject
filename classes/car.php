@@ -15,6 +15,7 @@ class Car
     private $_exhaust;
     private $_engine;
     private $_transmission;
+    private $_exterior;
     private $_leather;
     private $_stereo;
     private $_navigation;
@@ -228,6 +229,22 @@ class Car
     public function setTransmission($transmission)
     {
         $this->_transmission = $transmission;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExterior()
+    {
+        return $this->_exterior;
+    }
+
+    /**
+     * @param mixed $exterior
+     */
+    public function setExterior($exterior)
+    {
+        $this->_exterior = $exterior;
     }
 
     /**
