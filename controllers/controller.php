@@ -54,12 +54,19 @@ class Controller
                 $this->_f3->set('errors["email"]', "Invalid email");
             }
             // Data is valid
-            if (empty($this->_f3->get('errors'))) {
+            if (empty($this->_f3->get('errors')))
+            {
                 //Store the data in the session array
-                $_SESSION['fName'] = $_POST['fName'];
-                $_SESSION['lName'] = $_POST['lName'];
-                $_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['email'] = $_POST['email'];
+                if (isset($_POST['suv']))
+                {
+                    $car = new SUV($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
+                }
+                else
+                {
+                    $car = new Car($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
+                }
+
+                $_SESSION['car'] = $car;
 
                 // Reroute to the next page
                 $this->_f3->reroute('car');
@@ -71,7 +78,7 @@ class Controller
         $this->_f3->set('lName', $_POST['lName']);
         $this->_f3->set('phone', $_POST['phone']);
         $this->_f3->set('email', $_POST['email']);
-
+        $this->_f3->set('suv', $_POST['suv']);
 
         $view = new Template();
         echo $view->render('views/information.html');
@@ -104,9 +111,9 @@ class Controller
             // Data is valid
             if (empty($this->_f3->get('errors'))) {
                 //Store the data in the session array
-                $_SESSION['model'] = $_POST['makeDrop'];
-                $_SESSION['year'] = $_POST['yearDrop'];
-                $_SESSION['driveTrain'] = $_POST['driveTrain'];
+                $_SESSION['car']->setModel($_POST['makeDrop']);
+                $_SESSION['car']->setYear($_POST['yearDrop']);
+                $_SESSION['car']->setTransmission($_POST['driveTrain']);
 
                 //Redirect to exterior page
                 $this->_f3->reroute('exterior');
@@ -242,7 +249,14 @@ class Controller
                 $_SESSION['navigation'] = $_POST['nav'];
                 $_SESSION['headsUp'] = $_POST['head'];
 
-                $this->_f3->reroute('summary');
+                if($_SESSION['suv'] instanceof SUV)
+                {
+                    $this->_f3->reroute('/suv');
+                }
+                else
+                {
+                    $this->_f3->reroute('summary');
+                }
             }
         }
 
@@ -256,6 +270,44 @@ class Controller
         $this->_f3->set('selectedNavigation', $_POST['nav']);
         $this->_f3->set('headsUps', getHeadsUp());
         $this->_f3->set('selectedHeadsUp', $_POST['head']);
+
+        $view = new Template();
+        echo $view->render('views/interior.html');
+    }
+
+    /**
+     * Display the suv route
+     */
+    public function suv()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            //var_dump($_POST);
+            // Validate the number of seats
+            if (!$this->_validator->validSeats($_POST['seats'])) {
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["seats"]', "Please select number of seats");
+            }
+            // Validate the number of wheels
+            if (!$this->_validator->validNumWheels($_POST['wheels'])) {
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["wheels"]', "Please select the number of wheels");
+            }
+
+            // Data is valid
+            if (empty($this->_f3->get('errors'))) {
+                //Store the data in the session array
+                $_SESSION['seat'] = $_POST['seats'];
+                $_SESSION['wheel'] = $_POST['wheels'];
+
+                $this->_f3->reroute('summary');
+            }
+        }
+
+        $this->_f3->set('seats', getSeat());
+        $this->_f3->set('selectedSeat', $_POST['seats']);
+        $this->_f3->set('wheels', getNumWheels());
+        $this->_f3->set('selectedWheel', $_POST['wheels']);
 
         $view = new Template();
         echo $view->render('views/interior.html');

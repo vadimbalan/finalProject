@@ -21,45 +21,22 @@ class Car
     private $_headsUp;
 
     // Constructor
+
     /**
      * Car constructor.
      * @param $_fName
      * @param $_lName
      * @param $_phone
      * @param $_email
-     * @param $_model
-     * @param $_year
-     * @param $_rim
-     * @param $_spinners
-     * @param $_color
-     * @param $_exhaust
-     * @param $_engine
-     * @param $_transmission
-     * @param $_leather
-     * @param $_stereo
-     * @param $_navigation
-     * @param $_headsUp
      */
-    public function __construct($_fName, $_lName, $_phone, $_email, $_model, $_year, $_rim, $_spinners, $_color,
-                                $_exhaust, $_engine, $_transmission, $_leather, $_stereo, $_navigation, $_headsUp)
+    public function __construct($_fName, $_lName, $_phone, $_email)
     {
         $this->_fName = $_fName;
         $this->_lName = $_lName;
         $this->_phone = $_phone;
         $this->_email = $_email;
-        $this->_model = $_model;
-        $this->_year = $_year;
-        $this->_rim = $_rim;
-        $this->_spinners = $_spinners;
-        $this->_color = $_color;
-        $this->_exhaust = $_exhaust;
-        $this->_engine = $_engine;
-        $this->_transmission = $_transmission;
-        $this->_leather = $_leather;
-        $this->_stereo = $_stereo;
-        $this->_navigation = $_navigation;
-        $this->_headsUp = $_headsUp;
     }
+
 
     /**
      * @return mixed

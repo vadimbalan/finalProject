@@ -46,6 +46,12 @@ $f3->route('GET|POST /interior', function ()
     $GLOBALS['controller']->interior();
 });
 
+// Information about suv
+$f3->route('GET|POST /suv', function ()
+{
+    $GLOBALS['controller']->suv();
+});
+
 // Summary page of the final product
 $f3->route('GET /summary', function ()
 {

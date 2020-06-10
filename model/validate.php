@@ -162,6 +162,15 @@ class Validate
     {
         return in_array($head, getHeadsUp());
     }
+
+    /* Return a value indicating if number of wheels is valid
+     * @param string wheels
+     * @return boolean
+     */
+    function validNumWheels($wheels)
+    {
+        return in_array($wheels, getNumWheels());
+    }
 }
 
 

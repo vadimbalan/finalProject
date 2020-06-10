@@ -152,3 +152,13 @@ function getHeadsUp()
     $headsUp = array("Yes, add heads up display system", "No, don't add heads up display system");
     return $headsUp;
 }
+
+/* getNumWheels()
+ * Returns an array of number of wheels available
+ * @return array
+ */
+function getNumWheels()
+{
+    $wheels = array("4 wheels", "2 wheels in the front, 4 in the back", "4 wheels in the front, 2 in the back");
+    return $wheels;
+}
