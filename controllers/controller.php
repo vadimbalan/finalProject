@@ -54,12 +54,19 @@ class Controller
                 $this->_f3->set('errors["email"]', "Invalid email");
             }
             // Data is valid
-            if (empty($this->_f3->get('errors'))) {
+            if (empty($this->_f3->get('errors')))
+            {
                 //Store the data in the session array
-                $_SESSION['fName'] = $_POST['fName'];
-                $_SESSION['lName'] = $_POST['lName'];
-                $_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['email'] = $_POST['email'];
+                if (isset($_POST['suv']))
+                {
+                    $car = new SUV($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
+                }
+                else
+                {
+                    $car = new Car($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
+                }
+
+                $_SESSION['car'] = $car;
 
                 // Reroute to the next page
                 $this->_f3->reroute('car');
@@ -71,7 +78,7 @@ class Controller
         $this->_f3->set('lName', $_POST['lName']);
         $this->_f3->set('phone', $_POST['phone']);
         $this->_f3->set('email', $_POST['email']);
-
+        $this->_f3->set('suv', $_POST['suv']);
 
         $view = new Template();
         echo $view->render('views/information.html');
@@ -104,9 +111,9 @@ class Controller
             // Data is valid
             if (empty($this->_f3->get('errors'))) {
                 //Store the data in the session array
-                $_SESSION['model'] = $_POST['makeDrop'];
-                $_SESSION['year'] = $_POST['yearDrop'];
-                $_SESSION['driveTrain'] = $_POST['driveTrain'];
+                $_SESSION['car']->setModel($_POST['makeDrop']);
+                $_SESSION['car']->setYear($_POST['yearDrop']);
+                $_SESSION['car']->setTransmission($_POST['driveTrain']);
 
                 //Redirect to exterior page
                 $this->_f3->reroute('exterior');
@@ -165,13 +172,13 @@ class Controller
             // Data is valid
             if (empty($this->_f3->get('errors'))) {
                 //Store the data in the session array
-                $_SESSION['rim'] = $_POST['rimDrop'];
-                $_SESSION['spinner'] = $_POST['spinners'];
-                $_SESSION['color'] = $_POST['colorCar'];
-                $_SESSION['exhaust'] = $_POST['exhaust'];
-                $_SESSION['engine'] = $_POST['engine'];
-                $_SESSION['transmission'] = $_POST['transmission'];
-                $_SESSION['costumeExterior'] = $_POST['costumeExterior'];
+                $_SESSION['car']->setRim($_POST['rimDrop']);
+                $_SESSION['car']->setSpinners($_POST['spinners']);
+                $_SESSION['car']->setColor($_POST['colorCar']);
+                $_SESSION['car']->setExhaust($_POST['exhaust']);
+                $_SESSION['car']->setEngine($_POST['engine']);
+                $_SESSION['car']->setTransmission($_POST['transmission']);
+                $_SESSION['car']->setExterior($_POST['costumeExterior']);
 
                 $this->_f3->reroute('interior');
             }
@@ -212,11 +219,6 @@ class Controller
                 //Set an error variable in the F3 hive
                 $this->_f3->set('errors["leather"]', "Please select a leather type");
             }
-            // Validate the number of seats
-            if (!$this->_validator->validSeats($_POST['seats'])) {
-                //Set an error variable in the F3 hive
-                $this->_f3->set('errors["seats"]', "Please select number of seats");
-            }
             // Validate the type of stereo system
             if (!$this->_validator->validStereo($_POST['stereo'])) {
                 //Set an error variable in the F3 hive
@@ -236,20 +238,24 @@ class Controller
             // Data is valid
             if (empty($this->_f3->get('errors'))) {
                 //Store the data in the session array
-                $_SESSION['leather'] = $_POST['leather'];
-                $_SESSION['seat'] = $_POST['seats'];
-                $_SESSION['stereo'] = $_POST['stereo'];
-                $_SESSION['navigation'] = $_POST['nav'];
-                $_SESSION['headsUp'] = $_POST['head'];
+                $_SESSION['car']->setLeather($_POST['leather']);
+                $_SESSION['car']->setStereo($_POST['stereo']);
+                $_SESSION['car']->setNavigation($_POST['nav']);
+                $_SESSION['car']->setHeadsUp($_POST['head']);
 
-                $this->_f3->reroute('summary');
+                if($_SESSION['car'] instanceof SUV)
+                {
+                    $this->_f3->reroute('/suv');
+                }
+                else
+                {
+                    $this->_f3->reroute('summary');
+                }
             }
         }
 
         $this->_f3->set('leathers', getLeather());
         $this->_f3->set('selectedLeather', $_POST['leather']);
-        $this->_f3->set('seats', getSeat());
-        $this->_f3->set('selectedSeat', $_POST['seats']);
         $this->_f3->set('stereos', getStereo());
         $this->_f3->set('selectedStereo', $_POST['stereo']);
         $this->_f3->set('navigations', getNavigation());
@@ -259,6 +265,44 @@ class Controller
 
         $view = new Template();
         echo $view->render('views/interior.html');
+    }
+
+    /**
+     * Display the suv route
+     */
+    public function suv()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            //var_dump($_POST);
+            // Validate the number of seats
+            if (!$this->_validator->validSeats($_POST['seats'])) {
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["seats"]', "Please select number of seats");
+            }
+            // Validate the number of wheels
+            if (!$this->_validator->validNumWheels($_POST['wheels'])) {
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["wheels"]', "Please select the number of wheels");
+            }
+
+            // Data is valid
+            if (empty($this->_f3->get('errors'))) {
+                //Store the data in the session array
+                $_SESSION['car']->setSeats($_POST['seats']);
+                $_SESSION['car']->setNumOfWheels($_POST['wheels']);
+
+                $this->_f3->reroute('summary');
+            }
+        }
+
+        $this->_f3->set('seats', getSeat());
+        $this->_f3->set('selectedSeat', $_POST['seats']);
+        $this->_f3->set('wheels', getNumWheels());
+        $this->_f3->set('selectedWheel', $_POST['wheels']);
+
+        $view = new Template();
+        echo $view->render('views/suv.html');
     }
 
     /**

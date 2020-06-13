@@ -1,3 +1,10 @@
-.err {
+.err
+{
     color: darkred;
 }
+
+body
+{
+    background-color: lightblue;
+}
+
