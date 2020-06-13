@@ -23,6 +23,10 @@ class Database
     {
         //Connect to database with PDO
         try {
+            /*//Require config file
+            $user = $_SERVER['user'];
+            require_once "/home/$user/config.php";*/
+
             //Instantiate a database object
             $this->_dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
             echo 'Connected to database!';
