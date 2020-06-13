@@ -1,16 +1,4 @@
 <?php
-/*
- * CREATE TABLE food_order (
- 	order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    food VARCHAR(50),
-    meal VARCHAR(10),
-    condiments VARCHAR(100),
-    date_time DATETIME DEFAULT NOW()
-)
-
-INSERT INTO food_order (food, meal, condiments)
-VALUES ('sandwich', 'breakfast', 'sriracha, mayonnaise');
- */
 
 //Require config file
 require '/home/ctangree/config.php';
@@ -35,12 +23,12 @@ class Database
         }
     }
 
-    function writeOrder($order)
+    function writeCar($car)
     {
-        //var_dump($order);
+        var_dump($car);
 
         //Convert condiments array to a string
-        $conds = $order->getCondiments();
+        $conds = $car->getCondiments();
         if (empty($conds)) {
             $conds = "";
         } else {

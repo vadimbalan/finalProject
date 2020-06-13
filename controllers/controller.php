@@ -54,15 +54,11 @@ class Controller
                 $this->_f3->set('errors["email"]', "Invalid email");
             }
             // Data is valid
-            if (empty($this->_f3->get('errors')))
-            {
+            if (empty($this->_f3->get('errors'))) {
                 //Store the data in the session array
-                if (isset($_POST['suv']))
-                {
+                if (isset($_POST['suv'])) {
                     $car = new SUV($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
-                }
-                else
-                {
+                } else {
                     $car = new Car($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
                 }
 
@@ -243,12 +239,9 @@ class Controller
                 $_SESSION['car']->setNavigation($_POST['nav']);
                 $_SESSION['car']->setHeadsUp($_POST['head']);
 
-                if($_SESSION['car'] instanceof SUV)
-                {
+                if ($_SESSION['car'] instanceof SUV) {
                     $this->_f3->reroute('/suv');
-                }
-                else
-                {
+                } else {
                     $this->_f3->reroute('summary');
                 }
             }
@@ -272,8 +265,7 @@ class Controller
      */
     public function suv()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //var_dump($_POST);
             // Validate the number of seats
             if (!$this->_validator->validSeats($_POST['seats'])) {

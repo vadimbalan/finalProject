@@ -29,10 +29,16 @@ CREATE TABLE BMWExterior (
 
 CREATE TABLE BMWInterior (
     Leather varchar(100),
-    Seat varchar(80),
     Stereo varchar(20),
     Navigation varchar(40),
     Display varchar(40),
+    PersonID int,
+    FOREIGN KEY (PersonID) REFERENCES PersonalInfo(PersonID)
+);
+
+CREATE TABLE BMWSUV (
+    Wheels varchar(60),
+    Seats varchar(40),
     PersonID int,
     FOREIGN KEY (PersonID) REFERENCES PersonalInfo(PersonID)
 );

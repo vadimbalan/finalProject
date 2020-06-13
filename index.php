@@ -10,6 +10,7 @@ require_once("model/data-layer.php");
 
 // Start a session AFTER requiring autoload.php
 session_start();
+
 //To check if there's uncleaned session to cause error
 //var_dump($_SESSION);
 
