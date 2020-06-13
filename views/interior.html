@@ -29,11 +29,13 @@
 
                     </select>
 
-                    <span class="err">
-                            <check if="{{ isset(@errors['leather']) }}">
-                                {{ @errors['leather'] }}
-                            </check>
-                    </span>
+                    <check if="{{ isset(@errors['leather']) }}">
+                        <div class="alert alert-danger alert-dismissible fade show mt-1">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ @errors['leather'] }}
+                        </div>
+                    </check>
+
                 </div>
 
                 <div class="form-group">
@@ -47,11 +49,13 @@
                         <label for="{{ @stereo }}">{{ @stereo }}</label>
                     </repeat>
                     <br>
-                    <span class="err">
-                            <check if="{{ isset(@errors['stereo']) }}">
-                                {{ @errors['stereo'] }}
-                            </check>
-                    </span>
+
+                    <check if="{{ isset(@errors['stereo']) }}">
+                        <div class="alert alert-danger alert-dismissible fade show mt-1">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ @errors['stereo'] }}
+                        </div>
+                    </check>
 
                 </div>
 
@@ -66,11 +70,13 @@
                         <label for="{{ @navigation }}">{{ @navigation }}</label>
                     </repeat>
                     <br>
-                    <span class="err">
-                            <check if="{{ isset(@errors['nav']) }}">
-                                {{ @errors['nav'] }}
-                            </check>
-                    </span>
+
+                    <check if="{{ isset(@errors['nav']) }}">
+                        <div class="alert alert-danger alert-dismissible fade show mt-1">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ @errors['nav'] }}
+                        </div>
+                    </check>
 
                 </div>
 
@@ -85,11 +91,12 @@
                         <label for="{{ @headsUp }}">{{ @headsUp }}</label>
                     </repeat>
                     <br>
-                    <span class="err">
-                            <check if="{{ isset(@errors['head']) }}">
-                                {{ @errors['head'] }}
-                            </check>
-                    </span>
+                    <check if="{{ isset(@errors['head']) }}">
+                        <div class="alert alert-danger alert-dismissible fade show mt-1">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ @errors['head'] }}
+                        </div>
+                    </check>
 
                 </div>
 
@@ -112,7 +119,7 @@
         </form>
 
         <div class="float-right p-2">
-            <button type="submit" form="interior" class="btn btn-primary">Next ></button>
+            <button type="submit" form="interior" class="btn btn-dark">Next ></button>
         </div>
 
     </div>
