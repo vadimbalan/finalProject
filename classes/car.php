@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Car This holds all the characteristics of a car
+ */
 class Car
 {
     // Declare instance variables

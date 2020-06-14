@@ -1,5 +1,9 @@
 <?php
 
+
+/**
+ * Class Controller This is the controller and validates all the information before it's passed
+ */
 class Controller
 {
     private $_f3; //router
