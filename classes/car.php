@@ -30,12 +30,27 @@ class Car
      * @param $_phone
      * @param $_email
      */
-    public function __construct($_fName, $_lName, $_phone, $_email)
+    public function __construct($fName = "", $lName = "", $phone = "", $email = "", $model = "", $year = "",
+                                $rim = "", $spinners = "", $color = "", $exhaust = "", $engine = "", $transmission = "",
+                                $exterior = "", $leather = "", $stereo = "", $navigation = "", $headsUp = "")
     {
-        $this->_fName = $_fName;
-        $this->_lName = $_lName;
-        $this->_phone = $_phone;
-        $this->_email = $_email;
+        $this->setFName($fName);
+        $this->setLName($lName);
+        $this->setPhone($phone);
+        $this->setEmail($email);
+        $this->setEmail($model);
+        $this->setEmail($year);
+        $this->setEmail($rim);
+        $this->setEmail($spinners);
+        $this->setEmail($color);
+        $this->setEmail($exhaust);
+        $this->setEmail($engine);
+        $this->setEmail($transmission);
+        $this->setEmail($exterior);
+        $this->setEmail($leather);
+        $this->setEmail($stereo);
+        $this->setEmail($navigation);
+        $this->setEmail($headsUp);
     }
 
 

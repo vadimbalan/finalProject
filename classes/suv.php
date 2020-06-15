@@ -15,12 +15,15 @@ class SUV extends Car
      * @param $_seats
      * @param $_numOfWheels
      */
-    public function __construct($_fName, $_lName, $_phone, $_email, $_seats = "", $_numOfWheels = "")
+    public function __construct($fName = "", $lName = "", $phone = "", $email = "", $model = "", $year = "",
+                                $rim = "", $spinners = "", $color = "", $exhaust = "", $engine = "", $transmission = "",
+                                $exterior = "", $leather = "", $stereo = "", $navigation = "", $headsUp = "", $seats = "", $numOfWheels = "")
     {
-        parent::__construct($_fName, $_lName, $_phone, $_email);
+        parent::construct($fName, $lName, $phone, $email, $model, $year, $rim, $spinners, $color, $exhaust, $engine,
+            $transmission, $exterior, $leather, $stereo, $navigation, $headsUp);
 
-        $this->_seats = $_seats;
-        $this->_numOfWheels = $_numOfWheels;
+        $this->setSeats($seats);
+        $this->setNumOfWheels($numOfWheels);
     }
 
     /**
@@ -54,8 +57,6 @@ class SUV extends Car
     {
         $this->_numOfWheels = $numOfWheels;
     }
-
-
 
 
 }

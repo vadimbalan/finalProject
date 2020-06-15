@@ -18,6 +18,7 @@ session_start();
 $f3 = Base::instance();
 $validator = new Validate();
 $controller = new Controller($f3, $validator);
+$db = new Database();
 
 // Default route
 $f3->route('GET /', function ()

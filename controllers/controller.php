@@ -55,14 +55,27 @@ class Controller
             }
             // Data is valid
             if (empty($this->_f3->get('errors'))) {
-                //Store the data in the session array
-                if (isset($_POST['suv'])) {
-                    $car = new SUV($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
-                } else {
-                    $car = new Car($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
-                }
 
-                $_SESSION['car'] = $car;
+                //Create a Car object
+                if (isset($_POST['suv'])) {
+                    $car = new Car();
+                    $car->setFName($_POST['fName']);
+                    $car->setLName($_POST['lName']);
+                    $car->setPhone($_POST['phone']);
+                    $car->setEmail($_POST['email']);
+
+                    //Store the object in the session array
+                    $_SESSION['car'] = $car;
+                } else {
+                    $suv = new SUV();
+                    $suv->setFName($_POST['fName']);
+                    $suv->setLName($_POST['lName']);
+                    $suv->setPhone($_POST['phone']);
+                    $suv->setEmail($_POST['email']);
+
+                    //Store the object in the session array
+                    $_SESSION['car'] = $suv;
+                }
 
                 // Reroute to the next page
                 $this->_f3->reroute('car');
@@ -240,7 +253,7 @@ class Controller
                 $_SESSION['car']->setHeadsUp($_POST['head']);
 
                 if ($_SESSION['car'] instanceof SUV) {
-                    $this->_f3->reroute('/suv');
+                    $this->_f3->reroute('suv');
                 } else {
                     $this->_f3->reroute('summary');
                 }
