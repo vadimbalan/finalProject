@@ -59,27 +59,14 @@ class Controller
             }
             // Data is valid
             if (empty($this->_f3->get('errors'))) {
-
-                //Create a Car object
+                //Store the data in the session array
                 if (isset($_POST['suv'])) {
-                    $car = new Car();
-                    $car->setFName($_POST['fName']);
-                    $car->setLName($_POST['lName']);
-                    $car->setPhone($_POST['phone']);
-                    $car->setEmail($_POST['email']);
-
-                    //Store the object in the session array
-                    $_SESSION['car'] = $car;
+                    $car = new SUV($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
                 } else {
-                    $suv = new SUV();
-                    $suv->setFName($_POST['fName']);
-                    $suv->setLName($_POST['lName']);
-                    $suv->setPhone($_POST['phone']);
-                    $suv->setEmail($_POST['email']);
-
-                    //Store the object in the session array
-                    $_SESSION['car'] = $suv;
+                    $car = new Car($_POST['fName'], $_POST['lName'], $_POST['phone'], $_POST['email']);
                 }
+
+                $_SESSION['car'] = $car;
 
                 // Reroute to the next page
                 $this->_f3->reroute('car');
@@ -126,7 +113,7 @@ class Controller
                 //Store the data in the session array
                 $_SESSION['car']->setModel($_POST['makeDrop']);
                 $_SESSION['car']->setYear($_POST['yearDrop']);
-                $_SESSION['car']->setTransmission($_POST['driveTrain']);
+                $_SESSION['car']->setDriveTrain($_POST['driveTrain']);
 
                 //Redirect to exterior page
                 $this->_f3->reroute('exterior');
@@ -319,6 +306,12 @@ class Controller
      */
     public function summary()
     {
+        //Write summary to database
+        $GLOBALS['db']->writeInfo($_SESSION['car']);
+
+        //Write summary to database
+        $GLOBALS['db']->writeCar($_SESSION['car']);
+
         $view = new Template();
         echo $view->render('views/summary.html');
 

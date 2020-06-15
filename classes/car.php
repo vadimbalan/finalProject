@@ -13,6 +13,7 @@ class Car
     private $_model;
     private $_year;
     private $_rim;
+    private $_driveTrain;
     private $_spinners;
     private $_color;
     private $_exhaust;
@@ -33,27 +34,12 @@ class Car
      * @param $_phone
      * @param $_email
      */
-    public function __construct($fName = "", $lName = "", $phone = "", $email = "", $model = "", $year = "",
-                                $rim = "", $spinners = "", $color = "", $exhaust = "", $engine = "", $transmission = "",
-                                $exterior = "", $leather = "", $stereo = "", $navigation = "", $headsUp = "")
+    public function __construct($fName = "", $lName = "", $phone = "", $email = "")
     {
         $this->setFName($fName);
         $this->setLName($lName);
         $this->setPhone($phone);
         $this->setEmail($email);
-        $this->setModel($model);
-        $this->setYear($year);
-        $this->setRim($rim);
-        $this->setSpinners($spinners);
-        $this->setColor($color);
-        $this->setExhaust($exhaust);
-        $this->setEngine($engine);
-        $this->setTransmission($transmission);
-        $this->setExterior($exterior);
-        $this->setLeather($leather);
-        $this->setStereo($stereo);
-        $this->setNavigation($navigation);
-        $this->setHeadsUp($headsUp);
     }
 
     /**
@@ -150,6 +136,22 @@ class Car
     public function setYear($year)
     {
         $this->_year = $year;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDriveTrain()
+    {
+        return $this->_driveTrain;
+    }
+
+    /**
+     * @param mixed $driveTrain
+     */
+    public function setDriveTrain($driveTrain)
+    {
+        $this->_driveTrain = $driveTrain;
     }
 
     /**

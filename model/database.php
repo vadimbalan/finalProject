@@ -24,9 +24,9 @@ class Database
         }
     }
 
-    function writeCar($car)
+    function writeInfo($info)
     {
-        var_dump($car);
+        //var_dump($info);
 
         //Write to database
         //1. Define the query
@@ -37,16 +37,68 @@ class Database
         $statement = $this->_dbh->prepare($sql);
 
         //3. Bind the parameters
-        $statement->bindParam(':LastName', $car->getLName());
-        $statement->bindParam(':FirstName', $car->getFName());
-        $statement->bindParam(':Phone', $car->getPhone());
-        $statement->bindParam(':Email', $car->getEmail());
+        $statement->bindParam(':LastName', $info->getLName());
+        $statement->bindParam(':FirstName', $info->getFName());
+        $statement->bindParam(':Phone', $info->getPhone());
+        $statement->bindParam(':Email', $info->getEmail());
 
         //4. Execute the statement
         $statement->execute();
 
         //5. Process the results - SKIP
     }
+
+    function writeCar($car)
+    {
+        //var_dump($car);
+
+        //Write to database
+        //1. Define the query
+        $sql = "INSERT INTO BMWMake (Model, Year, DriveTrain)
+                VALUES (:Model, :Year, :DriveTrain)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $statement->bindParam(':Model', $car->getModel());
+        $statement->bindParam(':Year', $car->getYear());
+        $statement->bindParam(':DriveTrain', $car->getDriveTrain());
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the results - SKIP
+    }
+
+    function writeExterior($exterior)
+    {
+
+        //Write to database
+        //1. Define the query
+        $sql = "INSERT INTO BMWExterior(Rim_size, Spinner, Color, Exhaust, Engine, Transmission, Addition)
+                VALUES (:Rim_size, :Spinner, :Color, :Exhaust, :Engine, :Transmission, :Addition)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $statement->bindParam(':Rim_size', $exterior->getRim());
+        $statement->bindParam(':Spinner', $exterior->getSpinners());
+        $statement->bindParam(':Color', $exterior->getColor());
+        $statement->bindParam(':Exhaust', $exterior->getExhaust());
+        $statement->bindParam(':Engine', $exterior->getEngine());
+        $statement->bindParam(':Transmission', $exterior->getTransmission());
+        $statement->bindParam(':Addition', $exterior->getExterior());
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the results - SKIP
+    }
+
+
+
 //
 //    function getOrders()
 //    {
