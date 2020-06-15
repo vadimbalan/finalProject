@@ -41,19 +41,19 @@ class Car
         $this->setLName($lName);
         $this->setPhone($phone);
         $this->setEmail($email);
-        $this->setEmail($model);
-        $this->setEmail($year);
-        $this->setEmail($rim);
-        $this->setEmail($spinners);
-        $this->setEmail($color);
-        $this->setEmail($exhaust);
-        $this->setEmail($engine);
-        $this->setEmail($transmission);
-        $this->setEmail($exterior);
-        $this->setEmail($leather);
-        $this->setEmail($stereo);
-        $this->setEmail($navigation);
-        $this->setEmail($headsUp);
+        $this->setModel($model);
+        $this->setYear($year);
+        $this->setRim($rim);
+        $this->setSpinners($spinners);
+        $this->setColor($color);
+        $this->setExhaust($exhaust);
+        $this->setEngine($engine);
+        $this->setTransmission($transmission);
+        $this->setExterior($exterior);
+        $this->setLeather($leather);
+        $this->setStereo($stereo);
+        $this->setNavigation($navigation);
+        $this->setHeadsUp($headsUp);
     }
 
     /**
