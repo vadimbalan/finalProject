@@ -312,6 +312,9 @@ class Controller
         //Write summary to database
         $GLOBALS['db']->writeCar($_SESSION['car']);
 
+        //Write summary to database
+        $GLOBALS['db']->writeExterior($_SESSION['car']);
+
         $view = new Template();
         echo $view->render('views/summary.html');
 
