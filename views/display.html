@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>BMW Display</title>
     <include href="includes/header.html"></include>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 </head>
 <body>
-<div class="">
+<div class="container">
     <h1>Display all BMW configurations</h1>
 
-    <table class="table">
+    <table id="carTable" class="table">
         <thead class="thead-light">
         <tr>
             <th>Last Name</th>
@@ -38,7 +39,7 @@
         <tbody>
         <repeat group="{{ @BMWs }}" value="{{ @BMW }}">
             <tr>
-                <td>a{{ @BMW['LastName']}}</td>
+                <td>{{ @BMW['LastName']}}</td>
                 <td>{{ @BMW['FirstName'] }}</td>
                 <td>{{ @BMW['Phone'] }}</td>
                 <td>{{ @BMW['Email']}}</td>
@@ -66,5 +67,10 @@
     </table>
 
 </div>
+
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+    $('#carTable').DataTable();
+</script>
 </body>
 </html>
