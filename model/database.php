@@ -97,6 +97,50 @@ class Database
         //5. Process the results - SKIP
     }
 
+    function writeInterior($interior)
+    {
+
+        //Write to database
+        //1. Define the query
+        $sql = "INSERT INTO BMWInterior(Leather, Stereo, Navigation, Display)
+                VALUES (:Leather, :Stereo, :Navigation, :Display)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $statement->bindParam(':Leather', $interior->getLeather());
+        $statement->bindParam(':Stereo', $interior->getStereo());
+        $statement->bindParam(':Navigation', $interior->getNavigation());
+        $statement->bindParam(':Display', $interior->getHeadsUp());
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the results - SKIP
+    }
+
+    function writeSUV($suv)
+    {
+
+        //Write to database
+        //1. Define the query
+        $sql = "INSERT INTO BMWSUV(Wheels, Seats)
+                VALUES(:Wheels, :Seats)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $statement->bindParam(':Wheels', $suv->getNumOfWheels());
+        $statement->bindParam(':Seats', $suv->getSeats());
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the results - SKIP
+    }
+
 
 
 //

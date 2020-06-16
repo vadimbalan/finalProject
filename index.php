@@ -21,45 +21,37 @@ $controller = new Controller($f3, $validator);
 $db = new Database();
 
 // Default route
-$f3->route('GET /', function ()
-{
+$f3->route('GET /', function () {
     $GLOBALS['controller']->home();
 });
 
 // Basic information page
-$f3->route('GET|POST /information', function ()
-{
+$f3->route('GET|POST /information', function () {
     $GLOBALS['controller']->information();
 });
 
 // Basic information about car page
-$f3->route('GET|POST /car', function ()
-{
+$f3->route('GET|POST /car', function () {
     $GLOBALS['controller']->car();
 });
 
 // Information about exterior of car
-$f3->route('GET|POST /exterior', function ()
-{
+$f3->route('GET|POST /exterior', function () {
     $GLOBALS['controller']->exterior();
 });
 
 // Information about interior of car
-$f3->route('GET|POST /interior', function ()
-{
+$f3->route('GET|POST /interior', function () {
     $GLOBALS['controller']->interior();
 });
 
 // Information about suv
-$f3->route('GET|POST /suv', function ()
-{
+$f3->route('GET|POST /suv', function () {
     $GLOBALS['controller']->suv();
 });
 
 // Summary page of the final product
-$f3->route('GET /summary', function ()
-{
-
+$f3->route('GET /summary', function () {
     $GLOBALS['controller']->summary();
 });
 

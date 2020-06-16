@@ -306,14 +306,22 @@ class Controller
      */
     public function summary()
     {
-        //Write summary to database
+        //Write peronal information to database
         $GLOBALS['db']->writeInfo($_SESSION['car']);
 
-        //Write summary to database
+        //Write car model/make to database
         $GLOBALS['db']->writeCar($_SESSION['car']);
 
-        //Write summary to database
+        //Write exterior to database
         $GLOBALS['db']->writeExterior($_SESSION['car']);
+
+        //Write interior to database
+        $GLOBALS['db']->writeInterior($_SESSION['car']);
+
+        if ($_SESSION['car'] instanceof SUV) {
+            //Write SUV to database
+            $GLOBALS['db']->writeSUV($_SESSION['car']);
+        }
 
         $view = new Template();
         echo $view->render('views/summary.html');
