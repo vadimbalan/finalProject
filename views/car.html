@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Type of BMW</title>
+    <title>Make/Model of BMW</title>
     <include href="includes/header.html"></include>
 </head>
 <body>
@@ -15,7 +15,8 @@
             <div class="col-lg-8">
 
                 <div class="form-group">
-                    <label for="makeDrop"><strong>Please select the model of your dream BMW </strong><b class="err">*</b></label>
+                    <label for="makeDrop"><strong>Please select the model of your dream BMW </strong><b
+                            class="err">*</b></label>
                     <select class="form-control" id="makeDrop" name="makeDrop">
                         <option value="-- Please choose one --">-- Please choose one --</option>
 
@@ -27,11 +28,13 @@
 
                     </select>
 
-                    <span class="err">
-                            <check if="{{ isset(@errors['makeDrop']) }}">
-                                {{ @errors['makeDrop'] }}
-                            </check>
-                    </span>
+                    <check if="{{ isset(@errors['makeDrop']) }}">
+                        <div class="alert alert-danger alert-dismissible fade show mt-1">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ @errors['makeDrop'] }}
+                        </div>
+                    </check>
+
                 </div>
 
                 <div class="form-group">
@@ -47,11 +50,13 @@
 
                     </select>
 
-                    <span class="err">
-                            <check if="{{ isset(@errors['yearDrop']) }}">
-                                {{ @errors['yearDrop'] }}
-                            </check>
-                    </span>
+                    <check if="{{ isset(@errors['yearDrop']) }}">
+                        <div class="alert alert-danger alert-dismissible fade show mt-1">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ @errors['yearDrop'] }}
+                        </div>
+                    </check>
+
                 </div>
 
                 <div class="form-group">
@@ -65,11 +70,13 @@
                         <label for="{{ @driveTrain }}">{{ @driveTrain }}</label>
                     </repeat>
                     <br>
-                    <span class="err">
-                            <check if="{{ isset(@errors['driveTrain']) }}">
-                                {{ @errors['driveTrain'] }}
-                            </check>
-                    </span>
+
+                    <check if="{{ isset(@errors['driveTrain']) }}">
+                        <div class="alert alert-danger alert-dismissible fade show mt-1">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ @errors['driveTrain'] }}
+                        </div>
+                    </check>
 
                 </div>
             </div>
@@ -81,7 +88,8 @@
                                 href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">privacy
                             policy</a>.
                             Profile information can only be viewed by others with your permission.</p>
-                        <p class="card-text"><b>Required:</b> Anything with a <b class="err">*</b> is required and needs to be filled out.
+                        <p class="card-text"><b>Required:</b> Anything with a <b class="err">*</b> is required and needs
+                            to be filled out.
                         </p>
                     </div>
                 </div>
@@ -89,7 +97,7 @@
         </form>
 
         <div class="float-right p-2">
-            <button type="submit" form="car" class="btn btn-primary">Next ></button>
+            <button type="submit" form="car" class="btn btn-dark">Next ></button>
         </div>
 
 
