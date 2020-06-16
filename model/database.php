@@ -17,9 +17,7 @@ $path .= '/config.php';                //--> "/home/ctangree/config.php"
 
 if ($_SERVER['USER'] == 'vbalangr') {
     require_once "/home2/vbalangr/config.php";
-}
-else if($root == '/home/ctangree/public_html')
-{
+} else if ($root == '/home/ctangree/public_html') {
     require_once $path;
 }
 
@@ -157,26 +155,23 @@ class Database
         //5. Process the results - SKIP
     }
 
+    function getBMWs()
+    {
+        //Read fro database
+        //1. Define the query
+        $sql = "SELECT * FROM PersonalInfo, BMWMake, BMWExterior, BMWInterior, BMWSUV
+                ORDER BY PersonalInfo.LastName ASC";
 
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
 
-//
-//    function getOrders()
-//    {
-//        //Read fro database
-//        //1. Define the query
-//        $sql = "SELECT * FROM food_order
-//                ORDER BY date_time DESC";
-//
-//        //2. Prepare the statement
-//        $statement = $this->_dbh->prepare($sql);
-//
-//        //3. Bind the parameters - SKIP
-//
-//        //4. Execute the statement
-//        $statement->execute();
-//
-//        //5. Process the results
-//        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-//        return $result;
-//    }
+        //3. Bind the parameters - SKIP
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the results
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

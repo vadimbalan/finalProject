@@ -35,7 +35,6 @@ class Controller
     public function information()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //var_dump($_POST);
 
             // Validate first name
             if (!$this->_validator->validName($_POST['fName'])) {
@@ -91,7 +90,6 @@ class Controller
     {
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //var_dump($_POST);
 
             // Validate the model
             if (!$this->_validator->validModel($_POST['makeDrop'])) {
@@ -137,7 +135,6 @@ class Controller
     public function exterior()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //var_dump($_POST);
 
             // Validate the size of the rims
             if (!$this->_validator->validRim($_POST['rimDrop'])) {
@@ -208,12 +205,7 @@ class Controller
     public function interior()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //array(5) { ["leather"]=> string(5) "Vinyl"
-            // ["seats"]=> string(15) "2 seats 2 doors"
-            // ["stereo"]=> string(14) "Bang & Olufsen"
-            // ["nav"]=> string(26) "Yes, add navigation system"
-            // ["head"]=> string(37) "No, don't add heads up display system" }
-            //var_dump($_POST);
+
             // Validate the type of leather desired
             if (!$this->_validator->validLeather($_POST['leather'])) {
                 //Set an error variable in the F3 hive
@@ -270,7 +262,7 @@ class Controller
     public function suv()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //var_dump($_POST);
+
             // Validate the number of seats
             if (!$this->_validator->validSeats($_POST['seats'])) {
                 //Set an error variable in the F3 hive
@@ -327,5 +319,19 @@ class Controller
         echo $view->render('views/summary.html');
 
         session_destroy();
+    }
+
+    /**
+     * Display the summary from database
+     */
+    public function display()
+    {
+        $result = $GLOBALS['db']->getBMWs();
+        //var_dump($result);
+
+        $this->_f3->set('BMWs', $result);
+
+        $view = new Template();
+        echo $view->render('views/display.html');
     }
 }
