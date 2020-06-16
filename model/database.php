@@ -4,21 +4,25 @@
 //echo "</pre>";
 
 //Require config file
-require '/home2/vbalangr/config.php';
+//require '/home2/vbalangr/config.php';
 
-////Get document root
-//$root = $_SERVER['DOCUMENT_ROOT'];     //--> "/home/ctangree/public_html"
-
+//Get document root
+$root = $_SERVER['DOCUMENT_ROOT'];     //--> "/home/ctangree/public_html"
 //Get start position of /public_html
-//$pos = strpos($root, '/public_html');  //--> 14
-
+$pos = strpos($root, '/public_html');  //--> 14
 //Get the substring up to $pos
-//$path = substr($root, 0, $pos);        //--> "/home/ctangree"
-
+$path = substr($root, 0, $pos);        //--> "/home/ctangree"
 //Append filename
-//$path .= '/config.php';                //--> "/home/ctangree/config.php"
+$path .= '/config.php';                //--> "/home/ctangree/config.php"
 
-//require $path;
+$home = $_SERVER['home'];
+$user = $_SERVER['user'];
+
+if ($home == 'home2' && $user == 'vbalangr') {
+    require_once "/$home/$user/config.php";
+} else if ($root == '/home/ctangree/public_html') {
+    require_once $path;
+}
 
 class Database
 {
