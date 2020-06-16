@@ -15,12 +15,11 @@ $path = substr($root, 0, $pos);        //--> "/home/ctangree"
 //Append filename
 $path .= '/config.php';                //--> "/home/ctangree/config.php"
 
-$home = $_SERVER['home'];
-$user = $_SERVER['user'];
-
-if ($home == 'home2' && $user == 'vbalangr') {
-    require_once "/$home/$user/config.php";
-} else if ($root == '/home/ctangree/public_html') {
+if ($_SERVER['USER'] == 'vbalangr') {
+    require_once "/home2/vbalangr/config.php";
+}
+else if($root == '/home/ctangree/public_html')
+{
     require_once $path;
 }
 
