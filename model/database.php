@@ -1,24 +1,24 @@
 <?php
-echo "<pre>";
-var_dump($_SERVER);
-echo "</pre>";
+//echo "<pre>";
+//var_dump($_SERVER);
+//echo "</pre>";
 
 //Require config file
-//require '/home/ctangree/config.php';
+require '/home2/vbalangr/config.php';
 
 ////Get document root
-$root = $_SERVER['DOCUMENT_ROOT'];     //--> "/home/ctangree/public_html"
+//$root = $_SERVER['DOCUMENT_ROOT'];     //--> "/home/ctangree/public_html"
 
 //Get start position of /public_html
-$pos = strpos($root, '/public_html');  //--> 14
+//$pos = strpos($root, '/public_html');  //--> 14
 
 //Get the substring up to $pos
-$path = substr($root, 0, $pos);        //--> "/home/ctangree"
+//$path = substr($root, 0, $pos);        //--> "/home/ctangree"
 
 //Append filename
-$path .= '/config.php';                //--> "/home/ctangree/config.php"
+//$path .= '/config.php';                //--> "/home/ctangree/config.php"
 
-require $path;
+//require $path;
 
 class Database
 {
